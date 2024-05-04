@@ -3,7 +3,7 @@
         <h1 class=" font-mono"><a href="{{ route('homepage') }}">CRMStar</a></h1>
     </div>
 
-    <ul>
+    <ul class="flex flex-row gap-2">
         <li><a href="{{ route('homepage') }}" class="hover:text-[#1E0342] hover:font-bold transition-all ease-linear duration-200">Home</a></li>
         @auth
             <li><a href="#">Data</a></li>    
