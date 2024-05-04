@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\Dashboard;
 use App\Livewire\SignUp;
@@ -33,3 +34,6 @@ Route::get('/dashboard', Dashboard::class)
 -> name('dashboard') 
 -> middleware('auth');
 
+Route::get("add-organization", AddOrganization::class)
+-> name('add-organization')
+-> middleware('auth');
