@@ -25,7 +25,11 @@ Route::get('/register', SignUp::class) -> name('register');
 
 Route::get('/login', Login::class) -> name('login');
 
-Route::get('/add-property', AddPropertyPage::class) -> name("add-property");
+Route::get('/add-property', AddPropertyPage::class) 
+-> name("add-property")
+-> middleware('auth');
 
-Route::get('/dashboard', Dashboard::class) -> name('dashboard');
+Route::get('/dashboard', Dashboard::class) 
+-> name('dashboard') 
+-> middleware('auth');
 
