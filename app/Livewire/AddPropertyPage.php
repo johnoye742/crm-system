@@ -2,13 +2,39 @@
 
 namespace App\Livewire;
 
+use App\Models\Property;
+use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+#[Title('Add Property')]
 class AddPropertyPage extends Component
 {
+    #[Validate('required|max:200')]
+    public $pname;
+    #[Validate('required|max:200')]
+    public $price;
+    #[Validate('required|max:200')]
+    public $location;
+    #[Validate('required')]
+    public $pinfo;
 
     public function add() {
+        Log::alert('well it works, I guess');
+        $this -> validate();
+        $values = [
+            'property_name' => $this -> pname,
+            'property_price' => $this -> price,
+            'property_location' => $this -> location,
+            'property_info' => $this -> pinfo
+        ];
 
+        $property = new Property($values);
+
+        if($property -> save()) {
+            return redirect() -> route('dashboard');
+        }
     }
     
     public function render()
