@@ -773,6 +773,10 @@ video {
     display: flex;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:w-\[50\%\] {
     width: 50%;
   }

@@ -30,10 +30,26 @@
                 <label for="niche">Business Type: </label>
                 <select id="niche" class="p-3 py-2 rounded-full" wire:model="form.niche">
                     <option>-- Select a niche --</option>
-                    <option value="real-estate">Real Estate</option>                                           @error('form.pwd') <p>Problem with password</p> @enderror
-                </select>                                                                          @error('form.pwd2') <p>Problem with password</p> @enderror
-            </div>                                                                                 <input type="password" wire:model="form.pwd" placeholder="Password" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
-                                                                                                   <input type="password" wire:model="form.pwd2" placeholder="Confirm Password" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
+                    <option value="real-estate">Real Estate</option>                                           
+                </select>                                                       
+                                   
+            </div>  
+
+            <div class="w-full flex flex-row items-center gap-2">
+                <label for="org">Organization Name: </label>
+                <select id="org" class="p-3 py-2 rounded-full" wire:model="form.org">
+                    <option>-- Select an organisation --</option>
+                    @foreach ($organizations as $org)
+                        <option value="{{ $org -> id }}">{{ $org -> name }}</option>
+                    @endforeach                                        
+                </select>                
+            </div>  
+
+                                                                                          
+            <input type="password" wire:model="form.pwd" placeholder="Password" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
+            
+            @error('form.pwd2') <p>Passwords do not match</p> @enderror                                                                               
+            <input type="password" wire:model="form.pwd2" placeholder="Confirm Password" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
             
             <button type="submit" href={{ route('register') }} class=" px-3 py-2 rounded-full text-white w-fit bg-[#3C5B6F]">Sign Up</button>
             <p>Already have an account? <a href="{{ route('login') }}" class="text-[#DFD0B8]" wire:navigate>Login</a></p>
