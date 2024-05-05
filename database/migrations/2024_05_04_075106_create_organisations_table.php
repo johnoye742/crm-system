@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('organisations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table -> text('name');
-            
+            $table -> string('name');
+            $table -> string('niche');
         });
     }
 

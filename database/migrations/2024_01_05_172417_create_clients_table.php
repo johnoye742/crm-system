@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Organisation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Property;
+
 
 return new class extends Migration
 {
@@ -17,6 +20,8 @@ return new class extends Migration
             $table -> text('client_name');
             $table -> text('client_email');
             $table -> text('client_phone');
+            $table -> foreignIdFor(Property::class, 'property_id');
+            $table -> foreignIdFor(Organisation::class, 'organisation_id');
         });
     }
 
