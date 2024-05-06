@@ -13,7 +13,7 @@ class Login extends Component
     #[Validate('required|email|max:500')]
     public $email;
     #[Validate('required')]
-    public $pwd;
+    public $pew;
 
     public function login () {
         $this -> validate();
