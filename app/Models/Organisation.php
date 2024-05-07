@@ -14,4 +14,8 @@ class Organisation extends Model
 
         return $this -> hasMany(User::class, 'organisation_id');
     }
+
+    public function properties() : HasMany {
+        return $this -> hasMany(Property::class);
+    }
 }

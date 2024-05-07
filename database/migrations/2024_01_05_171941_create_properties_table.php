@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,6 +21,7 @@ return new class extends Migration
             $table -> text('property_location');
             $table -> text('property_info');
             $table -> foreignIdFor(User::class, 'user_id');
+            $table -> foreignIdFor(Organisation::class, 'organisation_id');
         });
     }
 

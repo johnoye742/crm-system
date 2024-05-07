@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Organisation;
 use App\Models\Property;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -27,7 +29,9 @@ class AddPropertyPage extends Component
             'property_name' => $this -> pname,
             'property_price' => $this -> price,
             'property_location' => $this -> location,
-            'property_info' => $this -> pinfo
+            'property_info' => $this -> pinfo,
+            'user_id' => Auth::user() -> id,
+            'organisation_id' => Auth::user() -> organisation_id
         ];
 
         $property = new Property($values);
@@ -39,6 +43,6 @@ class AddPropertyPage extends Component
     
     public function render()
     {
-        return view('livewire.add-property-page');
+        return view('livewire.add-property-page', ['organizations' => Organisation::all()]);
     }
 }

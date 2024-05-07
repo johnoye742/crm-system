@@ -13,6 +13,13 @@ class Property extends Model
         'property_name',
         'property_price',
         'property_location',
-        'property_info'
+        'property_info',
+        'user_id',
+        'organisation_id'
     ];
+
+    public function user() {
+
+        return $this -> belongsToMany(User::class, foreignPivotKey: 'user_id');
+    }
 }
