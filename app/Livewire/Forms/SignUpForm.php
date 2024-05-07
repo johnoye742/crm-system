@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -22,22 +23,24 @@ class SignUpForm extends Form
     public $role;
     #[Validate('required')]
     public $niche;
+    #[Validate('required')]
+    public $org;
 
     public function createUser() {
         $this -> validate();
 
         if($this -> pwd != $this -> pwd) return redirect() -> back() -> withErrors(['password' => 'Passwords do not match.']);
 
+        Log::debug('organisation '. $this->org);
         $value = [
             "email" => $this -> email,
             "password" => Hash::make($this -> pwd),
             "name" => $this -> fname,
             "role" => $this -> role,
-            "niche" => $this -> niche
+            "niche" => $this -> niche,
+            "organisation_id" => $this -> org
         ];
 
-        $user = new User($value);
-
-        $user -> save();
+        User::create($value);
     }
 }
