@@ -35,7 +35,7 @@
                                    
             </div>  
 
-            <div class="w-full flex flex-row items-center gap-2">
+            <div class="w-full flex flex-row items-center gap-2 bg-black">
                 <label for="org">Organization Name: </label>
                 <select id="org" class="p-3 py-2 rounded-full" wire:model="form.org">
                     <option>-- Select an organisation --</option>

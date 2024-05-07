@@ -1,6 +1,8 @@
 <div class="lg:px-12 px-5 py-14 w-full">
     <div class="w-full">
-        <h1 class="text-2xl">Dashboard</h1>
+        <h1 class="text-2xl">Welcome, {{ $user -> name }}</h1>
+
+        <p>{{ $user -> organisation -> name }}</p>
 
         <h1 class="py-5 text-xl">Properties</h1>
        
@@ -14,6 +16,13 @@
             </thead>
 
             <tbody class="rounded-lg ">
+                @foreach ($properties as $property)
+                    <tr>
+                        <td>{{ $property -> name }}</td>
+                        <td>{{ $property -> price }}</td>
+                        <td>{{ $property -> location }}</td>
+                    </tr>
+                @endforeach
                 <tr class="divide-x divide-yellow-400 p-5 text-white">
                     <td class="px-5 py-2">3 bedroom Duplex in the ends</td>
                     <td class="px-5">$58.00</td>
