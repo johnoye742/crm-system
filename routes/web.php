@@ -2,6 +2,7 @@
 
 use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
+use App\Livewire\AddPropertySale;
 use App\Livewire\Dashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
@@ -37,3 +38,5 @@ Route::get('/dashboard', Dashboard::class)
 Route::get("add-organization", AddOrganization::class)
 -> name('add-organization')
 -> middleware('auth');
+
+Route::get("add-property-sale", AddPropertySale::class);

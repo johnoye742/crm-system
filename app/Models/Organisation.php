@@ -18,4 +18,8 @@ class Organisation extends Model
     public function properties() : HasMany {
         return $this -> hasMany(Property::class);
     }
+
+    public function clients() : HasMany {
+        return $this -> hasMany(Client::class);
+    }
 }
