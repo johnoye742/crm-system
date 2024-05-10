@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Organisation;
 use App\Models\Property;
+use App\Models\PropertySale;
 use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,11 +16,14 @@ class Dashboard extends Component
 {
     public function render()
     {
-        $properties = Organisation::find(Auth::user() -> organisation_id) -> properties;
-        Log::debug($properties); 
+        $orgId = Auth::user() -> organisation_id;
+        $properties = Organisation::find($orgId) -> properties;
+        $propertySales = PropertySale::all() -> where('organisation_id', value: $orgId);
+        Log::debug($propertySales);
         return view('livewire.dashboard', [
             'user' => Auth::user(), 
-            'properties' => $properties
+            'properties' => $properties,
+            'property_sales' => $propertySales
         ]);
     }
 }
