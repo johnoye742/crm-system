@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\AddClient;
 use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
@@ -39,4 +40,9 @@ Route::get("add-organization", AddOrganization::class)
 -> name('add-organization')
 -> middleware('auth');
 
-Route::get("add-property-sale", AddPropertySale::class);
+Route::get("add-property-sale", AddPropertySale::class)
+-> middleware('auth')
+-> name('add-property-sales');
+
+Route::get("add-client", AddClient::class) 
+-> middleware('auth');
