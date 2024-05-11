@@ -7,6 +7,7 @@ use App\Livewire\AddPropertySale;
 use App\Livewire\Dashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
+use App\Models\PropertySale;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,8 @@ Route::get("add-organization", AddOrganization::class)
 Route::get("add-property-sale", AddPropertySale::class)
 -> middleware('auth')
 -> name('add-property-sales');
+
+Route::get("property-sales/{id}", PropertySale::class);
 
 Route::get("add-client", AddClient::class) 
 -> middleware('auth');
