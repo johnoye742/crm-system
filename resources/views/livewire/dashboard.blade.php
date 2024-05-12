@@ -7,8 +7,8 @@
             <h1 class="py-5 text-xl">Properties</h1>
             <a href={{ route('add-property') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Property</a>
         </div>
-        
-       
+
+
         <table class="bg-[#3C5B6F] mb-8 table-auto rounded-md p-10 overflow-scroll border-seperate w-full lg:overflow-hidden shadow-2xl">
             <thead class=" bg-[#948979] px-3 py-2 table-header-group">
                 <tr class="rounded-lg">
@@ -16,7 +16,7 @@
                     <th class="px-5 py-2">Property Price</th>
                     <th class="px-5 py-2 ">Property Location</th>
                     <th class="px-5 py-2 ">Action</th>
-                    
+
                 </tr>
             </thead>
 
@@ -32,10 +32,10 @@
                                 <a href="" class=" text-red-400">Delete</a>
                             </span>
                         </td>
-                        
+
                     </tr>
                 @endforeach
-            
+
             </tbody>
         </table>
 
@@ -43,7 +43,7 @@
             <h1 class="py-5 text-xl">Property Sales</h1>
             <a href={{ route('add-property-sales') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Sale</a>
         </div>
-       
+
         <table class="bg-[#3C5B6F] mb-8 table-auto rounded-md p-10 overflow-scroll border-seperate w-full lg:overflow-hidden shadow-2xl">
             <thead class=" bg-[#948979] px-3 py-2 table-header-group">
                 <tr class="rounded-lg">
@@ -52,7 +52,7 @@
                     <th class="px-5 py-2 ">Property Location</th>
                     <th class="px-5 py-2">Client Name</th>
                     <th class="px-5 py-2 ">Status</th>
-                    
+
                 </tr>
             </thead>
 
@@ -65,12 +65,12 @@
                         <td class="px-5 border border-slate-800">{{ $properties -> client -> client_name }}</td>
 
                         <td class="px-5 border border-slate-800">
-                            <a href="" class=" @if($properties -> status == 'opened') text-blue-400 @endif @if($properties -> status == 'ongoing') text-green-400 @endif @if($properties -> status == 'closed') text-red-400 @endif">{{ $properties -> status }}</a>
+                            <a href={{ route('property-sales', ['id' => $properties -> id]) }} class=" @if($properties -> status == 'opened') text-blue-400 @endif @if($properties -> status == 'ongoing') text-green-400 @endif @if($properties -> status == 'closed') text-red-400 @endif">{{ $properties -> status }}</a>
                         </td>
-                        
+
                     </tr>
                 @endforeach
-            
+
             </tbody>
         </table>
 

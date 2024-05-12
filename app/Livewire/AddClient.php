@@ -23,7 +23,7 @@ class AddClient extends Component
             'client_phone' => $this -> phone,
             'client_email' => $this -> email,
             'organisation_id' => auth() -> user() -> organisation_id,
-            'property_id' => 0 
+            'property_id' => 0
         ];
 
         // Add a client with data given from form
