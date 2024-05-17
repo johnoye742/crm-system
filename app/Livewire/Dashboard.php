@@ -5,11 +5,11 @@ namespace App\Livewire;
 use App\Models\Organisation;
 use App\Models\Property;
 use App\Models\PropertySale;
-use App\Models\User;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+
 
 #[Title('Dashboard')]
 class Dashboard extends Component
@@ -25,5 +25,11 @@ class Dashboard extends Component
             'properties' => $properties,
             'property_sales' => $propertySales
         ]);
+    }
+
+    public function deleteProperty(int $id) {
+        Property::find($id) -> delete();
+
+        return redirect() -> back();
     }
 }

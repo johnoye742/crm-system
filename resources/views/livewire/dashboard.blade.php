@@ -28,8 +28,8 @@
                         <td class="px-5 border border-slate-800">{{ $property -> property_location }}</td>
                         <td class="px-5 border border-slate-800">
                             <span>
-                                <a href="" class=" text-blue-400">Edit</a>
-                                <a href="" class=" text-red-400">Delete</a>
+                                <a href="" class=" text-blue-400" wire:navigate>Edit</a>
+                                <a href="" class=" text-red-400" wire:navigate>Delete</a>
                             </span>
                         </td>
 

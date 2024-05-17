@@ -6,7 +6,7 @@
     <ul class="flex flex-row gap-2">
         <li><a href="{{ route('homepage') }}" class="hover:text-[#1E0342] hover:font-bold transition-all ease-linear duration-200">Home</a></li>
         @auth
-            <li><a href="#">Data</a></li>    
+            <li><a href="#" wire:click="logout">Logout</a></li>    
         @endauth
     </ul>
 </div>

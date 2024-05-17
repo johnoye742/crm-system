@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PropertyController;
 use App\Livewire\AddClient;
 use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
@@ -8,6 +9,8 @@ use App\Livewire\Dashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
 use App\Livewire\PropertySales;
+use App\Models\Organisation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +40,8 @@ Route::get('/dashboard', Dashboard::class)
 -> name('dashboard')
 -> middleware('auth');
 
+Route::delete('/delete-property', [PropertyController::class, 'delete']); 
+
 Route::get("add-organization", AddOrganization::class)
 -> name('add-organization')
 -> middleware('auth');
@@ -51,6 +56,9 @@ Route::get("property-sales/{id}", PropertySales::class)
 Route::get("add-client", AddClient::class)
     -> middleware('auth');
 
-Route::get('add-me', function () {
-    return view('welcome');
+Route::get('employees', function() {
+    $organisation = Organisation::find(Auth::user() -> organisation_id);
+
+
+    dd($organisation -> name, $organisation -> employees);
 });
