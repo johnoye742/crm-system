@@ -12,6 +12,7 @@ use Livewire\Component;
 class SignUp extends Component
 {
     public SignUpForm $form;
+    
 
     public function signUp () {
         $this -> form -> createUser();

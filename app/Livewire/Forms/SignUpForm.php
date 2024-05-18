@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -20,27 +21,31 @@ class SignUpForm extends Form
     #[Validate('required')]
     public $fname;
     #[Validate('required')]
-    public $role;
-    #[Validate('required')]
     public $niche;
     #[Validate('required')]
-    public $org;
+    public $org_name;
 
     public function createUser() {
         $this -> validate();
 
         if($this -> pwd != $this -> pwd) return redirect() -> back() -> withErrors(['password' => 'Passwords do not match.']);
 
-        Log::debug('organisation '. $this->org);
+        // Create a new organisation with the organisation name and niche given by the user
+        $organisation = Organisation::create([
+            'name' => $this -> org_name,
+            'niche' => $this -> niche
+        ]);
+
         $value = [
             "email" => $this -> email,
             "password" => Hash::make($this -> pwd),
             "name" => $this -> fname,
-            "role" => $this -> role,
+            "role" => "Admin",
             "niche" => $this -> niche,
-            "organisation_id" => $this -> org
+            "organisation_id" => $organisation -> id
         ];
 
         User::create($value);
+
     }
 }
