@@ -1,0 +1,3 @@
+[ . ] give user roles
+[ ] add ability to add users only by administrator
+[ ] designate certain data to only be accessible by a specific user with a role
