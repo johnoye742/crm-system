@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Organisation extends Model
 {
     use HasFactory;
+    public $fillable = [
+        'name',
+        'niche'
+    ];
 
     public function employees() : HasMany {
 
