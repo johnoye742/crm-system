@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PropertyController;
 use App\Livewire\AddClient;
+use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
@@ -32,29 +33,28 @@ Route::get('/register', SignUp::class) -> name('register');
 
 Route::get('/login', Login::class) -> name('login');
 
-Route::get('/add-property', AddPropertyPage::class)
--> name("add-property")
--> middleware('auth');
-
-Route::get('/dashboard', Dashboard::class)
--> name('dashboard')
--> middleware('auth');
-
 Route::delete('/delete-property', [PropertyController::class, 'delete']); 
 
-Route::get("add-organization", AddOrganization::class)
--> name('add-organization')
--> middleware('auth');
 
-Route::get("add-property-sale", AddPropertySale::class)
--> middleware('auth')
--> name('add-property-sales');
 
-Route::get("property-sales/{id}", PropertySales::class)
--> name('property-sales');
+Route::middleware('auth') -> group(function () {
+    Route::get("add-client", AddClient::class);
+    Route::get('add-employees', AddEmployees::class);
+    Route::get("add-property-sale", AddPropertySale::class) -> name('add-property-sales');
+    
+    Route::get("add-organization", AddOrganization::class)
+    -> name('add-organization');
 
-Route::get("add-client", AddClient::class)
-    -> middleware('auth');
+    Route::get('/add-property', AddPropertyPage::class)
+    -> name("add-property");
+       
+    Route::get('/dashboard', Dashboard::class)
+    -> name('dashboard');
+    
+    Route::get("property-sales/{id}", PropertySales::class)
+    -> name('property-sales');
+
+});
 
 Route::get('employees', function() {
     $organisation = Organisation::find(Auth::user() -> organisation_id);
