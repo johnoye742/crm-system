@@ -4,9 +4,13 @@
     </div>
 
     <ul class="flex flex-row gap-2">
-        <li><a href="{{ route('homepage') }}" class="hover:text-[#1E0342] hover:font-bold transition-all ease-linear duration-200">Home</a></li>
+        
         @auth
-            <li><a href="#" wire:click="logout">Logout</a></li>    
+            <li><a href={{ route('dashboard') }} wire:navigate>Dashboard</a></li>
+            @if (strtolower(auth() -> user() -> role) == 'admin')
+                <li><a href="#employees">Employees</a></li>
+            @endif
+            <li><button wire:click="logout">Logout</button></li>    
         @endauth
     </ul>
 </div>
