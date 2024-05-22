@@ -1,3 +1,4 @@
 [✅] give user roles
 [✅] add ability to add users only by administrator
-[ ] designate certain data to only be accessible by a specific user with a role
+[✅] designate certain data to only be accessible by a specific user with a role
+[✅] ensure that a person is an admin before allowing them to go add employees

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PropertyController;
+use App\Http\Middleware\EnsureAdmin;
 use App\Livewire\AddClient;
 use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
@@ -39,7 +40,10 @@ Route::delete('/delete-property', [PropertyController::class, 'delete']);
 
 Route::middleware('auth') -> group(function () {
     Route::get("add-client", AddClient::class);
-    Route::get('add-employees', AddEmployees::class);
+    
+    Route::get('add-employees', AddEmployees::class)
+    -> middleware(EnsureAdmin::class);
+
     Route::get("add-property-sale", AddPropertySale::class) -> name('add-property-sales');
     
     Route::get("add-organization", AddOrganization::class)
@@ -48,8 +52,15 @@ Route::middleware('auth') -> group(function () {
     Route::get('/add-property', AddPropertyPage::class)
     -> name("add-property");
        
-    Route::get('/dashboard', Dashboard::class)
-    -> name('dashboard');
+    Route::get('/dashboard', function () {
+        $niche = Auth::user() -> niche;
+        if($niche == 'real-estate') {
+            return redirect() ->route('real-estate-dashboard');
+        }
+    }) -> name('dashboard');
+    
+    Route::get('/real-estate/dashboard', Dashboard::class)
+    -> name('real-estate-dashboard');
     
     Route::get("property-sales/{id}", PropertySales::class)
     -> name('property-sales');
