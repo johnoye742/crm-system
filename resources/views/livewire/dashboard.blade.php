@@ -88,5 +88,38 @@
             @endif
         @endif
         
+        @if(strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'real-estate-sales')
+            <div class="flex flex-row items-center gap-3 border-t border-gray-500 mt-5">
+                <h1 class="py-5 text-xl">Clients</h1>
+                <a href={{ route('add-client') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Clients</a>
+            </div>
+
+            @if (count($property_sales) > 0)
+                <table class="bg-[#3C5B6F] mb-8 table-auto rounded-md p-10 overflow-scroll border-seperate w-full lg:overflow-hidden shadow-2xl">
+                    <thead class=" bg-[#948979] px-3 py-2 table-header-group">
+                        <tr class="rounded-lg">
+                            
+                            <th class="px-5 py-2">Client Name</th>
+                            <th class="px-5 py-2">Client Email</th>
+                            <th class="px-5 py-2">Client Phone</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody class="rounded-lg">
+                        @foreach ($clients as $client)
+                            <tr class=" text-white">
+                                <td class="px-5 py-2 border border-slate-800">{{ $client -> clients_name  }}</td>
+                                <td class="px-5 border border-slate-800">{{ $client -> email }}</td>
+                                <td class="px-5 border border-slate-800">{{ $client -> phone }}</td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            @else 
+                <p>No clients</p>
+            @endif
+        @endif
         </div>
 </div>
