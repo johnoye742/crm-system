@@ -87,5 +87,6 @@
                 <p>No property sales</p>
             @endif
         @endif
-    </div>
+        
+        </div>
 </div>
