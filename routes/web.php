@@ -8,6 +8,7 @@ use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
 use App\Livewire\Dashboard;
+use App\Livewire\EditProperty;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
 use App\Livewire\PropertySales;
@@ -61,6 +62,9 @@ Route::middleware('auth') -> group(function () {
     
     Route::get('/real-estate/dashboard', Dashboard::class)
     -> name('real-estate-dashboard');
+
+    Route::get('/real-estate/edit-property/{id}', EditProperty::class)
+    -> name('property.edit');
     
     Route::get("property-sales/{id}", PropertySales::class)
     -> name('property-sales');
