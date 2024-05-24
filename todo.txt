@@ -2,3 +2,7 @@
 [✅] add ability to add users only by administrator
 [✅] designate certain data to only be accessible by a specific user with a role
 [✅] ensure that a person is an admin before allowing them to go add employees
+[ ] create pages for editing property information
+[ ] Do the functionality for the above page
+[ ] make the frontend responsive
+[ ] do finishing touches for real estate so we can move to other categories
