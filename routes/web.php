@@ -39,7 +39,7 @@ Route::delete('/delete-property', [PropertyController::class, 'delete']);
 
 
 Route::middleware('auth') -> group(function () {
-    Route::get("add-client", AddClient::class);
+    Route::get("add-client", AddClient::class) -> name('add-client');
     
     Route::get('add-employees', AddEmployees::class)
     -> middleware(EnsureAdmin::class);
