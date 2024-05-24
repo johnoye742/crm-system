@@ -32,8 +32,8 @@
                                 <td class="px-5 border border-slate-800">{{ $property -> property_location }}</td>
                                 <td class="px-5 border border-slate-800">
                                     <span>
-                                        <a href="" class=" text-blue-400" wire:navigate>Edit</a>
-                                        <a href="" class=" text-red-400" wire:navigate>Delete</a>
+                                        <a href="{{ route('property.edit', ['id' => $property -> id]) }}" class=" text-blue-400" wire:navigate>Edit</a>
+                                        <button class=" text-red-400" wire:click="deleteProperty({{ $property -> id }})">Delete</button>
                                     </span>
                                 </td>
 
@@ -48,7 +48,7 @@
         @endif
 
         @if(strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'real-estate-sales')
-            <div class="flex flex-row items-center gap-3 border-t border-gray-500">
+            <div class="flex flex-row mt-5 items-center gap-3 border-t border-gray-500">
                 <h1 class="py-5 text-xl">Property Sales</h1>
                 <a href={{ route('add-property-sales') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Sale</a>
             </div>
@@ -94,7 +94,7 @@
                 <a href={{ route('add-client') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Clients</a>
             </div>
 
-            @if (count($property_sales) > 0)
+            @if (count($clients) > 0)
                 <table class="bg-[#3C5B6F] mb-8 table-auto rounded-md p-10 overflow-scroll border-seperate w-full lg:overflow-hidden shadow-2xl">
                     <thead class=" bg-[#948979] px-3 py-2 table-header-group">
                         <tr class="rounded-lg">
@@ -109,9 +109,9 @@
                     <tbody class="rounded-lg">
                         @foreach ($clients as $client)
                             <tr class=" text-white">
-                                <td class="px-5 py-2 border border-slate-800">{{ $client -> clients_name  }}</td>
-                                <td class="px-5 border border-slate-800">{{ $client -> email }}</td>
-                                <td class="px-5 border border-slate-800">{{ $client -> phone }}</td>
+                                <td class="px-5 py-2 border border-slate-800">{{ $client -> client_name  }}</td>
+                                <td class="px-5 border border-slate-800">{{ $client -> client_email }}</td>
+                                <td class="px-5 border border-slate-800">{{ $client -> client_phone }}</td>
                             </tr>
                         @endforeach
 

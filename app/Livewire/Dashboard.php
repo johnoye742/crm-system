@@ -24,7 +24,7 @@ class Dashboard extends Component
         $properties = [];
 
         // Try to get the properties from the cache if it's there
-        $cachedProps = Cache::get('organisation_properties');
+        $cachedProps = Cache::get("organisation_properties.$orgId");
 
         // Checks if it exists in the cache
         if($cachedProps == null || !count($cachedProps) > 0) {
@@ -32,7 +32,7 @@ class Dashboard extends Component
             $properties = Organisation::find($orgId) -> properties;
 
             // Store the fetched data in the cache for subsequent requests
-            Cache::put('organisation_properties', $properties);
+            Cache::put("organisation_properties.$orgId", $properties);
         } else {
             // Give the properties from cache if it exists
             $properties = $cachedProps;
@@ -50,7 +50,8 @@ class Dashboard extends Component
 
     public function deleteProperty(int $id) {
         Property::find($id) -> delete();
-
+        Cache::delete('organisation_properties.' . Auth::user() -> organisation_id);
+        
         return redirect() -> back();
     }
 }
