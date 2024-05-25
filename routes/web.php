@@ -8,7 +8,9 @@ use App\Livewire\AddOrganization;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
 use App\Livewire\Dashboard;
+use App\Livewire\EditEmployee;
 use App\Livewire\EditProperty;
+use App\Livewire\Employees;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
 use App\Livewire\PropertySales;
@@ -43,14 +45,20 @@ Route::middleware('auth') -> group(function () {
     Route::get("add-client", AddClient::class) -> name('add-client');
     
     Route::get('add-employees', AddEmployees::class)
+    -> middleware(EnsureAdmin::class)
+    -> name('employees.add');
+
+    Route::get('employees', Employees::class) -> name('employees')
     -> middleware(EnsureAdmin::class);
+
+    Route::get('employees/edit/{id}', EditEmployee::class) -> name('employees.edit');
 
     Route::get("add-property-sale", AddPropertySale::class) -> name('add-property-sales');
     
     Route::get("add-organization", AddOrganization::class)
     -> name('add-organization');
 
-    Route::get('/add-property', AddPropertyPage::class)
+    Route::get('/real-estate/add-property', AddPropertyPage::class)
     -> name("add-property");
        
     Route::get('/dashboard', function () {
@@ -69,11 +77,4 @@ Route::middleware('auth') -> group(function () {
     Route::get("property-sales/{id}", PropertySales::class)
     -> name('property-sales');
 
-});
-
-Route::get('employees', function() {
-    $organisation = Organisation::find(Auth::user() -> organisation_id);
-
-
-    dd($organisation -> name, $organisation -> employees);
 });
