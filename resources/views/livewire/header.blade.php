@@ -8,7 +8,7 @@
         @auth
             <li><a href={{ route('dashboard') }} wire:navigate>Dashboard</a></li>
             @if (strtolower(auth() -> user() -> role) == 'admin')
-                <li><a href="#employees">Employees</a></li>
+                <li><a href={{ route('employees') }} wire:navigate>Employees</a></li>
             @endif
             <li><button wire:click="logout">Logout</button></li>    
         @endauth
