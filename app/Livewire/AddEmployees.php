@@ -35,7 +35,7 @@ class AddEmployees extends Component
             'role' => $this -> role
         ]);
 
-        return redirect() -> route('dashboard');
+        return redirect() -> route('employees');
     }
 
     public function render()
