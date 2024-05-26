@@ -42,8 +42,8 @@
 
                     </tbody>
                 </table>
-            @else 
-                <p>No Available properties</p>          
+            @else
+                <p>No Available properties</p>
             @endif
         @endif
 
@@ -83,11 +83,11 @@
 
                     </tbody>
                 </table>
-            @else 
+            @else
                 <p>No property sales</p>
             @endif
         @endif
-        
+
         @if(strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'real-estate-sales')
             <div class="flex flex-row items-center gap-3 border-t border-gray-500 mt-5">
                 <h1 class="py-5 text-xl">Clients</h1>
@@ -98,11 +98,10 @@
                 <table class="bg-[#3C5B6F] mb-8 lg:table-auto table-fixed rounded-md p-10 overflow-scroll border-seperate w-full lg:overflow-hidden shadow-2xl">
                     <thead class=" bg-[#948979] px-3 py-2 table-header-group">
                         <tr class="rounded-lg">
-                            
-                            <th class="px-5 py-2">Client Name</th>
-                            <th class="px-5 py-2">Client Email</th>
-                            <th class="px-5 py-2">Client Phone</th>
 
+                            <th class="px-5 py-2 text-slate-600">Client Name</th>
+                            <th class="px-5 py-2">Client Phone</th>
+                            <i>From idid</i>
                         </tr>
                     </thead>
 
@@ -117,7 +116,7 @@
 
                     </tbody>
                 </table>
-            @else 
+            @else
                 <p>No clients</p>
             @endif
         @endif
