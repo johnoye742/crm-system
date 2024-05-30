@@ -32,5 +32,8 @@
             <i wire:click="show">X</i>
         </div>  
     </div>
-    <i class="lg:hidden text-blue-200" wire:click="show">O</i>
+    <div class="lg:hidden">
+        <i class="text-blue-200" wire:click="show">O</i>
+
+    </div>
 </div>

@@ -6,7 +6,7 @@
     </div>
 
     {{-- Make a grid layout for the profile cards of employees --}}
-    <div class="grid grid-cols-4 pt-5 gap-5">
+    <div class="grid lg:grid-cols-4 grid-cols-1 pt-5 gap-5">
         {{-- Loop through the employee collection --}}
         @foreach ($employees as $employee) 
             {{-- Use rounded cards to represent employee data --}}
