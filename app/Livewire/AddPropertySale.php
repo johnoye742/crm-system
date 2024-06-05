@@ -31,7 +31,7 @@ class AddPropertySale extends Component
     public function render()
     {
         $organisation = Organisation::find(Auth::user() -> organisation_id);
-        return view('livewire.add-property-sale', [
+        return view('livewire.real-estate.add-property-sale', [
             'properties' => $organisation -> properties,
             'clients' => $organisation -> clients
         ]);

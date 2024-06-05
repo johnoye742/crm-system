@@ -32,6 +32,6 @@ class PropertySales extends Component
     {
         $property = PropertySale::find($this -> id);
         Log::debug($property);
-        return view('livewire.property-sales', ['property' => $property]);
+        return view('livewire.real-estate.property-sales', ['property' => $property]);
     }
 }

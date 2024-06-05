@@ -43,6 +43,6 @@ class AddPropertyPage extends Component
     
     public function render()
     {
-        return view('livewire.add-property-page', ['organizations' => Organisation::all()]);
+        return view('livewire.real-estate.add-property-page', ['organizations' => Organisation::all()]);
     }
 }

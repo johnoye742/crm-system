@@ -23,7 +23,7 @@ class Header extends Component
 
     public function render()
     {
-        return view('livewire.real-estate1-header');
+        return view('livewire.real-estate.header');
     }
 
     public function logout() {

@@ -19,7 +19,10 @@ return new class extends Migration
             $table -> date('dob');
             $table -> enum('gender', ['male', 'female', 'custom']);
             $table -> json('emergency_contact');
-            $table -> json('insurance_info');
+            $table -> text('address');
+            $table -> text('phone');
+            $table -> text('occupation');
+            $table -> text('state_of_origin');
             $table -> foreignIdFor(Organisation::class);
 
         });

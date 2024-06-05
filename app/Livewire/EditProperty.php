@@ -44,6 +44,6 @@ class EditProperty extends Component
     }
     public function render()
     {
-        return view('livewire.edit-property');
+        return view('livewire.real-estate.edit-property');
     }
 }

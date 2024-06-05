@@ -40,7 +40,7 @@ class Dashboard extends Component
         
         $propertySales = PropertySale::all() -> where('organisation_id', value: $orgId);
         
-        return view('livewire.real-estate-dashboard', [
+        return view('livewire.real-estate.dashboard', [
             'user' => Auth::user(), 
             'properties' => $properties,
             'property_sales' => $propertySales,

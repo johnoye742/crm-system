@@ -11,7 +11,12 @@ use Livewire\Component;
 class AddPatient extends Component
 {
     #[Validate('required')]
-    public $pname, $gender, $dob, $emergency_contact, $insurance_info;
+    public $pname, $gender, $dob, $occupation, $emergency_contact, $phone, $address, $state;
+
+    public function mount() {
+        // Initialise gender as male by default
+        $this -> gender = 'male';
+    }
     
     public function add() {
         // Validate user inputs
@@ -19,7 +24,6 @@ class AddPatient extends Component
 
         // Initialize some variables here for code simplicity
         $emergency_contact = $this -> emergency_contact;
-        $insurance_info = $this -> insurance_info;
 
         // Collect the data to be inserted
         $data = [
@@ -27,8 +31,11 @@ class AddPatient extends Component
             'gender' => $this -> gender,
             'dob' => $this -> dob,
             'emergency_contact' => json_encode("{ 'phone' : '$emergency_contact' }"),
-            'insurance_info' => json_encode("{ 'info' : '$insurance_info' }"),
-            'organisation_id' => auth() -> user() -> organisation_id
+            'organisation_id' => auth() -> user() -> organisation_id,
+            'address' => $this -> address,
+            'phone' => $this -> phone,
+            'state_of_origin' => $this -> state,
+            'occupation' => $this -> occupation
         ];
 
         // Insert into patients table
@@ -39,6 +46,6 @@ class AddPatient extends Component
     }
     public function render()
     {
-        return view('livewire.add-patient');
+        return view('livewire.health-care.add-patient');
     }
 }

@@ -14,9 +14,11 @@ class HealthCareDashboard extends Component
     public function render()
     {
         $user = Auth::user();
-        return view('livewire.health-care-dashboard', [
+        $user_organisation = Organisation::find($user -> organisation_id);
+        return view('livewire.health-care.dashboard', [
             'user' => $user,
-            'patients' => Organisation::find($user -> organisation_id) -> patients
+            'patients' => $user_organisation -> patients,
+            'user_organisation' => $user_organisation
         ]);
     }
 }

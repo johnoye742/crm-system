@@ -34,6 +34,6 @@ class AddClient extends Component
     }
     public function render()
     {
-        return view('livewire.add-client');
+        return view('livewire.real-estate.add-client');
     }
 }

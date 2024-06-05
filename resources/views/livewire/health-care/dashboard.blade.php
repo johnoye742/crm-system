@@ -2,7 +2,7 @@
     <div class="w-full">
         <h1 class="text-2xl">Welcome, {{ $user -> name }}</h1>
 
-        <p class="text-xl font-bold">{{ $user -> organisation -> name }}</p>
+        <p class="text-xl font-bold">{{ $user_organisation -> name }}</p>
         
         <p>{{ strtoupper(str_replace('-', ' ', $user->role)) }}</p>
         @if(strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'doctor')
@@ -20,7 +20,9 @@
                             <th class="px-5 py-2">Name</th>
                             <th class="px-5 py-2">Date Of Birth</th>
                             <th class="px-5 py-2 ">Gender</th>
-
+                            <th class="px-5 py-2 ">State</th>
+                            <th class="px-5 py-2 ">Occupation</th>
+                            
                         </tr>
                     </thead>
 
@@ -30,12 +32,17 @@
                                 <td class="px-5 py-2 border  overflow-scroll lg:overflow-auto">{{ $patient -> name  }}</td>
                                 <td class="px-5 border  overflow-scroll lg:overflow-auto">{{ $patient -> dob }}</td>
                                 <td class="px-5 border  overflow-scroll lg:overflow-auto">{{ $patient -> gender }}</td>
+                                <td class="px-5 border  overflow-scroll lg:overflow-auto">{{ $patient -> state_of_origin }}</td>
+                                <td class="px-5 border  overflow-scroll lg:overflow-auto">{{ $patient -> occupation }}</td>
 
                             </tr>
                         @endforeach
 
                     </tbody>
                 </table>
+
+                <a href={{ route('health-care.add-patient') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>View All</a>
+                
             @else
                 <p>No Available properties</p>
             @endif
