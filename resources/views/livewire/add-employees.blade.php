@@ -11,8 +11,17 @@
             <label for="role">Role: </label>
             <select id="role" class="p-3 py-2 rounded-full" wire:model="role">
                 <option>-- Select a role --</option>
-                <option value="real-estate-agent">Agent</option>
-                <option value="real-estate-sales">Sales</option>
+                @if(auth() -> user() -> niche == 'real-estate')
+                    <option value="real-estate-agent">Agent</option>
+                    <option value="real-estate-sales">Sales</option>
+                    
+                @endif
+
+                @if (auth() -> user() -> niche == 'health-care')
+                    <option value="health-care-doctor">Doctor</option>
+                    <option value="health-care-nurse">Nurse</option>
+                    <option value="health-care-receptionist">Receptionist</option>
+                @endif
             </select>                                                       
                                
         </div>  

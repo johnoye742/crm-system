@@ -5,12 +5,14 @@ use App\Http\Middleware\EnsureAdmin;
 use App\Livewire\AddClient;
 use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
+use App\Livewire\AddPatient;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
 use App\Livewire\Dashboard;
 use App\Livewire\EditEmployee;
 use App\Livewire\EditProperty;
 use App\Livewire\Employees;
+use App\Livewire\HealthCareDashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
 use App\Livewire\PropertySales;
@@ -63,18 +65,29 @@ Route::middleware('auth') -> group(function () {
        
     Route::get('/dashboard', function () {
         $niche = Auth::user() -> niche;
-        if($niche == 'real-estate') {
-            return redirect() ->route('real-estate-dashboard');
+        switch($niche) {
+            case 'real-estate':
+                return redirect() -> route('real-estate.dashboard');
+            break;
+            case 'health-care':
+                return redirect() -> route('health-care.dashboard');
+            break;
         }
     }) -> name('dashboard');
     
     Route::get('/real-estate/dashboard', Dashboard::class)
-    -> name('real-estate-dashboard');
+    -> name('real-estate.dashboard');
 
     Route::get('/real-estate/edit-property/{id}', EditProperty::class)
     -> name('property.edit');
     
     Route::get("property-sales/{id}", PropertySales::class)
     -> name('property-sales');
+
+    Route::get('/health-care/dashboard', HealthCareDashboard::class)
+    -> name('health-care.dashboard');
+
+    Route::get('/health-care/add-patient', AddPatient::class)
+    -> name('health-care.add-patient');
 
 });

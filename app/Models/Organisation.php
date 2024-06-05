@@ -26,4 +26,8 @@ class Organisation extends Model
     public function clients() : HasMany {
         return $this -> hasMany(Client::class);
     }
+
+    public function patients() : HasMany {
+        return $this -> hasMany(Patient::class);
+    }
 }

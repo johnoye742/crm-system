@@ -15,7 +15,8 @@
                 <label for="niche">Business Type: </label>
                 <select id="niche" class="p-3 py-2 rounded-full" wire:model="form.niche">
                     <option>-- Select a niche --</option>
-                    <option value="real-estate">Real Estate</option>                                           
+                    <option value="real-estate">Real Estate</option>  
+                    <option value="health-care">Health Care</option>                                         
                 </select>                                                       
                                    
             </div>  
