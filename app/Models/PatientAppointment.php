@@ -12,7 +12,7 @@ class PatientAppointment extends Model
     protected $fillable = [
         'user_id',
         'patient_id',
-        'scheduled_date',
+        'scheduled_for',
         'info'
     ];
 }

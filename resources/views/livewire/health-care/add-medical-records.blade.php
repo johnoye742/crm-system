@@ -55,6 +55,11 @@
                 <label for="follow_up_date">Follow Up Date: </label>
                 <input type="date" wire:model="follow_up_date"  class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full lg:w-[50%]">
             </div>
+
+            <div class="flex flex-row gap-3">
+                <input wire:model="appointment_check" id="appointment_check" type="checkbox">
+                <label for="appointment_check">Add appointment</label>
+            </div>
              
             <button type="submit" class=" px-3 py-2 rounded-full text-white w-fit bg-[#3C5B6F]">+ Add</button>
         </form>

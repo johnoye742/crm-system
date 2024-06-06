@@ -9,6 +9,6 @@
 [✅] do finishing touches for real estate so we can move to other categories
 [✅] design and create medical_records table
 [✅] design and create patient appointments table
-[ ] create page for adding medical_records
+[✅] create page for adding medical_records
 [ ] create page for adding, editing and viewing appointments
 [ ] create pages for viewing employees, properties, patients, records, etc

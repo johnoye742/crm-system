@@ -3,8 +3,9 @@
 namespace App\Livewire\HealthCare;
 
 use App\Models\MedicalRecord;
-use App\Models\Organisation;
+use App\Models\PatientAppointment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -18,8 +19,12 @@ class AddMedicalRecords extends Component
     #[Validate('required')]
     public $patient_id;
 
+    public $appointment_check;
+
     public function render()
     {
+        Gate::authorize('add-medical-records');
+        
         $patients = Auth::user() -> organisation -> patients;
 
         return view('livewire.health-care.add-medical-records', ['patients' => $patients]);
@@ -44,6 +49,16 @@ class AddMedicalRecords extends Component
 
         // Insert the data into the MedicalRecords table
         MedicalRecord::insert($data);
+
+        // Add appointment if user checks the appointment checkbox
+        if($this -> appointment_check) {
+            PatientAppointment::insert([
+                'user_id' => Auth::user() -> id,
+                'patient_id' => $this -> patient_id,
+                'scheduled_for' => $this -> follow_up_date,
+                'info' => $this -> notes
+            ]);
+        }
 
         // Redirect to the dashboard
         return redirect() -> route('dashboard');
