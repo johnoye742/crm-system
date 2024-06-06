@@ -15,4 +15,8 @@ class PatientAppointment extends Model
         'scheduled_for',
         'info'
     ];
+
+    public function patient() {
+        $this -> belongsTo(Patient::class);
+    }
 }
