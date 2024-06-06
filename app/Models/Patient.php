@@ -16,4 +16,8 @@ class Patient extends Model
         'insurance_info',
         'organisation_id'
     ];
+
+    public function records() {
+        return $this -> hasMany(MedicalRecord::class);
+    }
 }
