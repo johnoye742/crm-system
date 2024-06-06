@@ -23,6 +23,7 @@ return new class extends Migration
             $table -> text('diagnosis');
             $table -> text('treatment');
             $table -> text('notes');
+            $table -> text('prescription') -> nullable();
             $table -> date('follow_up_date');
         });
     }

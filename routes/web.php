@@ -12,6 +12,7 @@ use App\Livewire\Dashboard;
 use App\Livewire\EditEmployee;
 use App\Livewire\EditProperty;
 use App\Livewire\Employees;
+use App\Livewire\HealthCare\AddMedicalRecords;
 use App\Livewire\HealthCareDashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
@@ -48,7 +49,8 @@ Route::middleware('auth') -> group(function () {
     
     Route::get('add-employees', AddEmployees::class)
     -> middleware(EnsureAdmin::class)
-    -> name('employees.add');
+    -> name('employees.add')
+    -> can('add-employees');
 
     Route::get('employees', Employees::class) -> name('employees')
     -> middleware(EnsureAdmin::class);
@@ -89,5 +91,8 @@ Route::middleware('auth') -> group(function () {
 
     Route::get('/health-care/add-patient', AddPatient::class)
     -> name('health-care.add-patient');
+
+    Route::get('health-care/add-medical-records', AddMedicalRecords::class)
+    -> name('heath-care.add-medical-records');
 
 });
