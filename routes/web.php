@@ -14,6 +14,7 @@ use App\Livewire\EditProperty;
 use App\Livewire\Employees;
 use App\Livewire\HealthCare\AddAppointments;
 use App\Livewire\HealthCare\AddMedicalRecords;
+use App\Livewire\HealthCare\ViewPatientData;
 use App\Livewire\HealthCareDashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
@@ -98,5 +99,8 @@ Route::middleware('auth') -> group(function () {
 
     Route::get('health-care/add-medical-appointments', AddAppointments::class)
     -> name('health-care.add-appointments');
+
+    Route::get('health-care/patients/{id}', ViewPatientData::class)
+    -> name("health-care.view-patient");
 
 });
