@@ -27,5 +27,9 @@ class AppServiceProvider extends ServiceProvider
 
             return strtolower($user -> role) == 'admin' ? Response::allow() : Response::deny('you do not have the permision to add employees');
         });
+
+        Gate::define('add-medical-records', function (User $user) {
+            return strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'doctor';
+        });
     }
 }
