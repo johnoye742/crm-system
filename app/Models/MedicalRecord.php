@@ -20,6 +20,6 @@ class MedicalRecord extends Model
 
     public function doctor()
     {
-        return $this -> belongsTo(User::class);
+        return $this -> belongsTo(User::class, 'user_id');
     }
 }
