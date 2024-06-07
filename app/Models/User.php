@@ -58,4 +58,16 @@ class User extends Authenticatable
 
         return $this -> belongsToMany(Property::class, foreignPivotKey: 'property_id', table: 'users_properties');
     }
+
+    public function isAdmin() {
+        if(strtolower($this -> role) == 'admin') {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isDoctor() {
+        return strtolower($this -> role) == 'doctor';
+    }
 }

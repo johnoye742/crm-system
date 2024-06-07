@@ -19,7 +19,8 @@ use App\Livewire\HealthCareDashboard;
 use App\Livewire\SignUp;
 use App\Livewire\Login;
 use App\Livewire\PropertySales;
-use App\Models\Organisation;
+use App\Livewire\ViewEmployee;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -54,9 +55,13 @@ Route::middleware('auth') -> group(function () {
     -> name('employees.add')
     -> can('add-employees');
 
+    
+
     Route::get('employees', Employees::class) -> name('employees')
     -> middleware(EnsureAdmin::class);
-
+    
+    Route::get('employees/{email}', ViewEmployee::class);
+    
     Route::get('employees/edit/{id}', EditEmployee::class) -> name('employees.edit');
 
     Route::get("add-property-sale", AddPropertySale::class) -> name('add-property-sales');
@@ -92,7 +97,8 @@ Route::middleware('auth') -> group(function () {
     -> name('health-care.dashboard');
 
     Route::get('/health-care/add-patient', AddPatient::class)
-    -> name('health-care.add-patient');
+    -> name('health-care.add-patient')
+    -> can('create', Patient::class);
 
     Route::get('health-care/add-medical-records', AddMedicalRecords::class)
     -> name('heath-care.add-medical-records');
@@ -100,7 +106,9 @@ Route::middleware('auth') -> group(function () {
     Route::get('health-care/add-medical-appointments', AddAppointments::class)
     -> name('health-care.add-appointments');
 
-    Route::get('health-care/patients/{id}', ViewPatientData::class)
-    -> name("health-care.view-patient");
+    Route::get('health-care/patients/{patient}', ViewPatientData::class)
+    -> name("health-care.view-patient")
+    -> can('view', "patient");
+
 
 });

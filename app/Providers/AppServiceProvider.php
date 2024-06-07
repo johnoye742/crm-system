@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,6 +31,13 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::define('add-medical-records', function (User $user) {
             return strtolower($user -> role) == 'admin' || strtolower($user -> role) == 'doctor';
+        });
+
+        Gate::define('employees.view', function (User $user, string $email) {
+            $viewing_user = User::all() -> where('email', $email) -> first();
+            Log::debug($viewing_user -> organisation_id == $user -> organisation_id);
+
+            return $user -> organisation_id == 1;
         });
     }
 }
