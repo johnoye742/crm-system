@@ -23,9 +23,9 @@
                 @endif
 
                 @if (auth() -> user() -> niche == 'health-care')
-                    <option value="health-care-doctor">Doctor</option>
-                    <option value="health-care-nurse">Nurse</option>
-                    <option value="health-care-receptionist">Receptionist</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="receptionist">Receptionist</option>
                 @endif
             </select>                                                       
                                
