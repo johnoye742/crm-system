@@ -23,7 +23,7 @@ class Dashboard extends Component
         $this -> orgId = Auth::user() -> organisation_id;
 
         // Try to get the properties from the cache if it's there and fetch from the db if it's not
-        $properties = Cache::rememberForever("organisation_properties.". $this -> orgId, function () {
+        $properties = Cache::rememberForever("organisation:properties.". $this -> orgId, function () {
             return Organisation::find($this -> orgId) -> properties;
         });
 
@@ -39,8 +39,11 @@ class Dashboard extends Component
     }
 
     public function deleteProperty(int $id) {
+        // Delete the property from the database
         Property::find($id) -> delete();
-        Cache::delete('organisation_properties.' . Auth::user() -> organisation_id);
+
+        // Invalidate cache
+        Cache::delete('organisation:properties.' . Auth::user() -> organisation_id);
         
         return redirect() -> back();
     }
