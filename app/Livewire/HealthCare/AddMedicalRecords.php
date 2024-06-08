@@ -23,8 +23,6 @@ class AddMedicalRecords extends Component
 
     public function render()
     {
-        Gate::authorize('add-medical-records');
-        
         $patients = Auth::user() -> organisation -> patients;
 
         return view('livewire.health-care.add-medical-records', ['patients' => $patients]);
