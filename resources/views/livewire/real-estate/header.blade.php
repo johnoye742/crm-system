@@ -1,6 +1,6 @@
 <div class="w-full flex flex-row item-center justify-between lg:px-10 px-3 py-5 bg-[#153448] shadow-md text-white">
     <div>
-        <h1 class=" font-mono"><a href="{{ route('homepage') }}">CRMStar</a></h1>
+        <h1 class=" font-mono lato-black"><a href="{{ route('homepage') }}">CRMStar</a></h1>
     </div>
 
     <ul class="lg:flex flex-row gap-2 hidden">
@@ -29,11 +29,15 @@
                 </ul>
             </div>
 
-            <i wire:click="show">X</i>
+            <i wire:click="show" class="fi fi-br-cross text-blue-200 cursor-pointer"></i>
         </div>  
     </div>
     <div class="lg:hidden">
-        <i class="text-blue-200" wire:click="show">O</i>
+        <i class="text-blue-200 cursor-pointer fi fi-br-menu-burger" wire:click="show"></i>
 
     </div>
+
+    @assets
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    @endassets
 </div>
