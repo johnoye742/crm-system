@@ -33,6 +33,8 @@
                                 <td class="px-5 border  overflow-scroll lg:overflow-auto">
                                     <span>
                                         <a href="{{ route('property.edit', ['id' => $property -> id]) }}" class=" text-blue-400" wire:navigate>Edit</a>
+                                        
+                                        <a href="{{ route('property.view', ['property' => $property -> id]) }}" class=" text-blue-400" wire:navigate>View</a>
                                         <button class=" text-red-400" wire:click="deleteProperty({{ $property -> id }})">Delete</button>
                                     </span>
                                 </td>
