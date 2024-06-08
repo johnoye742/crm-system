@@ -7,6 +7,7 @@
         <title>{{ $title ?? 'Page Title' }} - CrmStar</title>
 
         <link rel="stylesheet" href={{ asset('css/app.css') }}>
+        <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     </head>
     <body>
         <livewire:header></livewire:header>
