@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Organisation;
 use App\Models\Property;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -37,6 +38,9 @@ class AddPropertyPage extends Component
         $property = new Property($values);
 
         if($property -> save()) {
+            // Invalidate cache
+            Cache::delete('organisation:properties.' . Auth::user() -> organisation_id);
+            
             return redirect() -> route('dashboard');
         }
     }
