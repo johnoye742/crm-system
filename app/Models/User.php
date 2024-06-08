@@ -68,6 +68,6 @@ class User extends Authenticatable
     }
 
     public function isDoctor() {
-        return strtolower($this -> role) == 'doctor';
+        return strtolower($this -> role) == 'health-care-doctor';
     }
 }
