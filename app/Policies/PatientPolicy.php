@@ -15,7 +15,7 @@ class PatientPolicy
     {
         //
 
-        return $user -> isAdmin() || $user -> isDoctor();
+        return $user -> isAdmin() || $user -> isDoctor() || $user -> isReceptionist();
     }
 
     /**
