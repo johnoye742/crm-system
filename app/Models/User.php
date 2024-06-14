@@ -70,4 +70,8 @@ class User extends Authenticatable
     public function isDoctor() {
         return strtolower($this -> role) == 'health-care-doctor';
     }
+
+    public function isReceptionist() {
+        return strtolower($this -> role) == 'health-care-receptionist';
+    }
 }

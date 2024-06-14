@@ -24,10 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Allow https requests in production
+        /* Allow https requests in production
         if(env('APP_ENV') == 'production') {
             URL::forceScheme('https');
-        }
+        }*/
+        
         // Prevent any non-administrator from adding employees to an organisation
         Gate::define('add-employees', function (User $user) {
 

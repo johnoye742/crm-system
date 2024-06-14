@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
+        "mailersend/laravel-driver": "^2.6",
         "predis/predis": "^2.0"
     },
     "require-dev": {

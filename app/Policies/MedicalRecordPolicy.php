@@ -14,6 +14,7 @@ class MedicalRecordPolicy
     public function viewAny(User $user): bool
     {
         //
+        return $user -> isDoctor() || $user -> isAdmin();
     }
 
     /**
