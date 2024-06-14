@@ -22,9 +22,12 @@ use App\Livewire\PropertySales;
 use App\Livewire\RealEstate\ViewProperties;
 use App\Livewire\ViewEmployee;
 use App\Livewire\ViewProperty;
+use App\Mail\AppointmentDue;
 use App\Models\MedicalRecord;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,4 +122,7 @@ Route::middleware('auth') -> group(function () {
     -> name("health-care.view-patient")
     -> can('view', "patient");
 
+});
+Route::get('/notification-test', function(Request $request) {
+    Mail::to(Auth::user()) -> send(new AppointmentDue(MedicalRecord::find(2)));
 });
