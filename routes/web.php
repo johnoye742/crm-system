@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\PatientAppointment;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,35 +51,35 @@ Route::get('/register', SignUp::class) -> name('register');
 
 Route::get('/login', Login::class) -> name('login');
 
-Route::delete('/delete-property', [PropertyController::class, 'delete']); 
+Route::delete('/delete-property', [PropertyController::class, 'delete']);
 
 
 
 Route::middleware('auth') -> group(function () {
     Route::get("add-client", AddClient::class) -> name('add-client');
-    
+
     Route::get('add-employees', AddEmployees::class)
     -> middleware(EnsureAdmin::class)
     -> name('employees.add')
     -> can('add-employees');
 
-    
+
 
     Route::get('employees', Employees::class) -> name('employees')
     -> middleware(EnsureAdmin::class);
-    
+
     Route::get('employees/{email}', ViewEmployee::class);
-    
+
     Route::get('employees/edit/{id}', EditEmployee::class) -> name('employees.edit');
 
     Route::get("add-property-sale", AddPropertySale::class) -> name('add-property-sales');
-    
+
     Route::get("add-organization", AddOrganization::class)
     -> name('add-organization');
 
     Route::get('/real-estate/add-property', AddPropertyPage::class)
     -> name("add-property");
-       
+
     Route::get('/dashboard', function () {
         $niche = Auth::user() -> niche;
         switch($niche) {
@@ -89,7 +91,7 @@ Route::middleware('auth') -> group(function () {
             break;
         }
     }) -> name('dashboard');
-    
+
     Route::get('/real-estate/dashboard', Dashboard::class)
     -> name('real-estate.dashboard');
 
@@ -98,9 +100,9 @@ Route::middleware('auth') -> group(function () {
 
     Route::get('/real-estate/property/{property}', ViewProperty::class)
     -> name('property.view');
-    
+
     Route::get("/real-estate/properties", ViewProperties::class);
-    
+
     Route::get("property-sales/{id}", PropertySales::class)
     -> name('property-sales');
 
@@ -123,6 +125,4 @@ Route::middleware('auth') -> group(function () {
     -> can('view', "patient");
 
 });
-Route::get('/notification-test', function(Request $request) {
-    Mail::to(Auth::user()) -> send(new AppointmentDue(MedicalRecord::find(2)));
-});
+
