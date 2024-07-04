@@ -22,16 +22,10 @@ use App\Livewire\PropertySales;
 use App\Livewire\RealEstate\ViewProperties;
 use App\Livewire\ViewEmployee;
 use App\Livewire\ViewProperty;
-use App\Mail\AppointmentDue;
 use App\Models\MedicalRecord;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\PatientAppointment;
-use Illuminate\Support\Facades\Log;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
