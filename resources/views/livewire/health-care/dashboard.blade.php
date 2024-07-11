@@ -1,9 +1,8 @@
-<div class="lg:px-12 px-5 py-14 w-full">
+<div class="lg:px-12 px-5 py-5 w-full">
     <div class="w-full">
-        <h1 class="text-2xl">Welcome, {{ $user -> name }}</h1>
 
-        <p class="text-xl font-bold">{{ $user_organisation -> name }}</p>
-        
+        <p class="text-2xl font-bold">{{ $user_organisation -> name }}</p>
+
         <p>{{ strtoupper(str_replace('-', ' ', $user->role)) }}</p>
         @can('viewAny', \App\Models\Patient::class)
             <div class="flex flex-row items-center gap-3 border-t border-gray-500">
@@ -26,7 +25,7 @@
                         </tr>
                     </thead>
 
-                    <tbody class="rounded-lg">
+                    <tbody class="rounded-lg w-full">
                         @foreach ($patients as $patient)
                             <tr class=" text-white">
                                 <td class="px-5 py-2 border  overflow-scroll lg:overflow-auto">{{ $patient -> name  }}</td>
@@ -47,7 +46,7 @@
                 </table>
 
                 <a href={{ route('health-care.add-patient') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>View All</a>
-                
+
             @else
                 <p>No Available properties</p>
             @endif
