@@ -85,38 +85,44 @@ Route::middleware('auth') -> group(function () {
             break;
         }
     }) -> name('dashboard');
+    Route::prefix('real-estate') -> group(function () {
 
-    Route::get('/real-estate/dashboard', Dashboard::class)
-    -> name('real-estate.dashboard');
+        Route::get('dashboard', Dashboard::class)
+        -> name('real-estate.dashboard');
 
-    Route::get('/real-estate/edit-property/{id}', EditProperty::class)
-    -> name('property.edit');
+        Route::get('/edit-property/{id}', EditProperty::class)
+        -> name('property.edit');
 
-    Route::get('/real-estate/property/{property}', ViewProperty::class)
-    -> name('property.view');
+        Route::get('/property/{property}', ViewProperty::class)
+        -> name('property.view');
 
-    Route::get("/real-estate/properties", ViewProperties::class);
+        Route::get("/properties", ViewProperties::class);
 
-    Route::get("property-sales/{id}", PropertySales::class)
-    -> name('property-sales');
+        Route::get("property-sales/{id}", PropertySales::class)
+        -> name('property-sales');
 
-    Route::get('/health-care/dashboard', HealthCareDashboard::class)
-    -> name('health-care.dashboard');
+    });
 
-    Route::get('/health-care/add-patient', AddPatient::class)
-    -> name('health-care.add-patient')
-    -> can('create', Patient::class);
+    Route::prefix('health-care') -> group(function () {
 
-    Route::get('health-care/add-medical-records', AddMedicalRecords::class)
-    -> name('health-care.add-medical-records')
-    -> can('create', MedicalRecord::class);
+        Route::get('dashboard', HealthCareDashboard::class)
+        -> name('health-care.dashboard');
 
-    Route::get('health-care/add-medical-appointments', AddAppointments::class)
-    -> name('health-care.add-appointments');
+        Route::get('add-patient', AddPatient::class)
+        -> name('health-care.add-patient')
+        -> can('create', Patient::class);
 
-    Route::get('health-care/patients/{patient}', ViewPatientData::class)
-    -> name("health-care.view-patient")
-    -> can('view', "patient");
+        Route::get('add-medical-records', AddMedicalRecords::class)
+        -> name('health-care.add-medical-records')
+        -> can('create', MedicalRecord::class);
+
+        Route::get('add-medical-appointments', AddAppointments::class)
+        -> name('health-care.add-appointments');
+
+        Route::get('patients/{patient}', ViewPatientData::class)
+        -> name("health-care.view-patient")
+        -> can('view', "patient");
+    });
 
 });
 
