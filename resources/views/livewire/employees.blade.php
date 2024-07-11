@@ -8,12 +8,15 @@
     {{-- Make a grid layout for the profile cards of employees --}}
     <div class="grid lg:grid-cols-4 grid-cols-1 pt-5 gap-5">
         {{-- Loop through the employee collection --}}
-        @foreach ($employees as $employee) 
+        @foreach ($employees as $employee)
             {{-- Use rounded cards to represent employee data --}}
             <div class="p-4 rounded-xl text-white bg-[#153448]">
                 <p>{{ $employee -> name }}</p>
                 <p class="text-[#948979]">{{ str_replace("-", " ", ucfirst($employee -> role)) }}</p>
-                <p class="flex flex-row justify-between w-full mt-4"><a href={{ route('employees.edit', ['id' => $employee -> id]) }} class="text-sky-500">edit</a><button wire:click="deleteEmployee({{ $employee -> id }})" class="text-red-500">delete</button></p>
+                <p class="flex flex-row justify-between w-full mt-4">
+                    <a href={{ route('employees.edit', ['id' => $employee -> id]) }} class="text-sky-500"><i class="fi fi-rr-edit"></i></a>
+                    <button wire:click="deleteEmployee({{ $employee -> id }})" class="text-red-500"><i class="fi fi-rr-trash"></i></button>
+                </p>
             </div>
         @endforeach
     </div>
