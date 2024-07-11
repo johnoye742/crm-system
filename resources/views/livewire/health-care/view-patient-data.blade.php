@@ -1,4 +1,4 @@
-<div class="px-10 py-12">
+<div class="px-10 py-8">
     <div class="flex flex-row gap-3 items-center">
         <h1 class="text-2xl">Patient</h1>
 
@@ -25,12 +25,12 @@
             <h2 class="text-xl">Medical Record</h2>
 
             @foreach ($medical_record as $record)
-                <section class="border-b border-b-gray-300 flex flex-col gap-3">
+                <section class="border-b grid grid-cols-4 hover:bg-gray-100 p-5 border-b-gray-100 flex flex-col rounded-lg gap-3">
                     <div>
                         <h3 class="font-bold">Visit Date</h3>
                         <p>{{ $record -> visit_date }}</p>
                     </div>
-                    
+
                     <div>
                         <h3 class="font-bold">Doctor Name</h3>
                         <p>{{ $record -> doctor -> name }}</p>
@@ -58,13 +58,13 @@
                         <h3 class="font-bold">Notes</h3>
                         <p>{{ $record -> notes }}</p>
                     </div>
-                    
+
                     <div>
                         <h3 class="font-bold">Follow Up Date</h3>
                         <p>{{ $record -> follow_up_date }}</p>
                     </div>
                 </section>
             @endforeach
-        </section>        
+        </section>
     @endcan
 </div>
