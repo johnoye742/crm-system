@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="w-full">
-                    <a href={{ route('dashboard') }}
+                    <a href={{ route('health-care.patients') }}
                     class="py-3 px-3 w-[100vw] @if($page == 'patients') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
                         <i class="fi fi-rr-user-injured mb-[-3px]"></i> <span>Patients</span>
                     </a>
