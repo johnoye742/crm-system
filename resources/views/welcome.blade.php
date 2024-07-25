@@ -13,9 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href={{ asset('css/app.css') }}>
     </head>
-    
+
     <body>
-        <livewire:header></livewire:header>
 
         <div class="w-full grid lg:grid-cols-2 gap-5 p-10">
             <img src={{ asset('images/user-growth.svg') }}>
