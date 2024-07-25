@@ -1,6 +1,5 @@
-<div class="lg:px-12 px-5 py-14 w-full">
+<div class="lg:px-12 px-5 w-full">
     <div class="w-full">
-        <h1 class="text-2xl">Welcome, {{ $user -> name }}</h1>
 
         <p class="text-xl font-bold">{{ $user -> organisation -> name }}</p>
         <p>{{ strtoupper(str_replace('-', ' ', $user->role)) }}</p>
@@ -33,7 +32,7 @@
                                 <td class="px-5 border  overflow-scroll lg:overflow-auto">
                                     <span>
                                         <a href="{{ route('property.edit', ['id' => $property -> id]) }}" class=" text-blue-400" wire:navigate>Edit</a>
-                                        
+
                                         <a href="{{ route('property.view', ['property' => $property -> id]) }}" class=" text-blue-400" wire:navigate>View</a>
                                         <button class=" text-red-400" wire:click="deleteProperty({{ $property -> id }})">Delete</button>
                                     </span>
