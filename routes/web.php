@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PropertyController;
 use App\Http\Middleware\EnsureAdmin;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Livewire\AddClient;
 use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
@@ -42,9 +43,11 @@ Route::get('/', function () {
     return view('welcome');
 }) -> name('homepage');
 
-Route::get('/register', SignUp::class) -> name('register');
+Route::get('/register', SignUp::class) -> name('register')
+                                       -> middleware(RedirectIfAuthenticated::class);
 
-Route::get('/login', Login::class) -> name('login');
+Route::get('/login', Login::class) -> name('login')
+                                   -> middleware(RedirectIfAuthenticated::class);
 
 Route::delete('/delete-property', [PropertyController::class, 'delete']);
 
@@ -97,7 +100,8 @@ Route::middleware('auth') -> group(function () {
         Route::get('/property/{property}', ViewProperty::class)
         -> name('property.view');
 
-        Route::get("/properties", ViewProperties::class);
+        Route::get("/properties", ViewProperties::class)
+        -> name('real-estate.properties');
 
         Route::get("property-sales/{id}", PropertySales::class)
         -> name('property-sales');
@@ -116,7 +120,7 @@ Route::middleware('auth') -> group(function () {
         -> name('health-care.add-patient')
         -> can('create', Patient::class);
 
-        Route::get('add-medical-records', AddMedicalRecords::class)
+        Route::get('add-medical-records/{id?}', AddMedicalRecords::class)
         -> name('health-care.add-medical-records')
         -> can('create', MedicalRecord::class);
 
@@ -130,3 +134,6 @@ Route::middleware('auth') -> group(function () {
 
 });
 
+Route::get('/hey', function ($str) {
+    return $str;
+});
