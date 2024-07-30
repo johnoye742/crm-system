@@ -1,4 +1,4 @@
-<div class="py-12 px-10">
+<div class=" px-10">
     <h1 class="text-2xl">All Properties</h1>
     <h2 class="text-xl font-bold">{{ auth() -> user() -> organisation -> name }}</h2>
 
@@ -34,7 +34,8 @@
             </tbody>
         </table>
     @else
-        <p>No Available properties</p>
+        <p class="mt-5 text-gray-300">No Available properties</p>
     @endif
 
+    {{ $properties -> links() }}
 </div>
