@@ -15,7 +15,7 @@
     </head>
 
     <body>
-
+        <livewire:navbar></livewire:navbar>
         <div class="w-full grid lg:grid-cols-2 gap-5 p-10">
             <img src={{ asset('images/user-growth.svg') }}>
             <div class="flex flex-col gap-3 justify-center">
