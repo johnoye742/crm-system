@@ -1,4 +1,4 @@
-<div class="px-10 py-12">
+<div class="px-10">
     <h1 class="text-2xl font-bold">{{ $organisation_name }}</h1>
     <div class="flex flex-row mt-5 items-center gap-3 border-t border-gray-500">
         <h1 class="py-5 text-xl">Employees</h1>
