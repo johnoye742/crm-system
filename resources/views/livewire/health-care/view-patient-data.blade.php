@@ -1,8 +1,8 @@
-<div class="px-10 py-8">
+<div class="px-10">
     <div class="flex flex-row gap-3 items-center">
         <h1 class="text-2xl">Patient</h1>
 
-        <a href={{ route('health-care.add-medical-records') }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Record</a>
+        <a href={{ route('health-care.add-medical-records', ['id' => $patient -> id]) }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Record</a>
     </div>
     <section class="mt-3 border-t border-t-gray-500 flex flex-col gap-3 pt-3">
         <h2 class="text-xl">Demographics</h2>
