@@ -21,16 +21,25 @@ class AddMedicalRecords extends Component
 
     public $appointment_check;
 
+    public $id;
+
+    public function mount($id) {
+        $this -> id = $id;
+        $this -> patient_id = $id;
+
+        return;
+    }
+
     public function render()
     {
         $patients = Auth::user() -> organisation -> patients;
 
-        return view('livewire.health-care.add-medical-records', ['patients' => $patients]);
+        return view('livewire.health-care.add-medical-records', ['patients' => $patients, 'patient_id' => $this -> id]);
     }
 
     public function add() {
         // Validate the user inputs
-        $this -> validate();       
+        $this -> validate();
         // collect the inputs to be added to the db
         $data = [
             'patient_id' => $this -> patient_id,
