@@ -3,7 +3,6 @@
 namespace App\Livewire\RealEstate;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class ViewProperties extends Component
@@ -11,10 +10,8 @@ class ViewProperties extends Component
     public function render()
     {
         $organisation_id = Auth::user() -> organisation_id;
-        $properties = Cache::rememberForever("organisation:properties.$organisation_id", function() {
+        $properties = Auth::user() -> organisation -> properties() -> orderBy('id', 'DESC') -> paginate(15);
 
-            return Auth::user() -> organisation -> properties;
-        });
         return view('livewire.real-estate.view-properties', [
             'properties' => $properties
         ]);
