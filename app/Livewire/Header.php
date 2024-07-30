@@ -27,6 +27,10 @@ class Header extends Component
                 $this -> page = 'patients';
                 break;
 
+            case route('real-estate.properties'):
+                $this -> page = 'properties';
+                break;
+
             default:
                 $this->page = 'dashboard';
                 break;
