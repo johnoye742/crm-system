@@ -25,6 +25,30 @@
                         <i class="fi fi-rr-house-chimney mb-[-3px]"></i> <span>Home</span>
                     </a>
                 </li>
+
+                <li class="w-full">
+                    <a href={{ route('real-estate.properties') }}
+                        class="py-3 px-3 w-[100vw] @if($page == 'properties') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
+                         <i class="fi fi-rr-apartment mb-[-3px]"></i><span>Properties</span>
+                    </a>
+                </li>
+
+
+                <li class="w-full">
+                    <a href={{ route('dashboard') }}
+                        class="py-3 px-3 w-[100vw] @if($page == 'sales') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
+                        <i class="fi fi-rr-basket-shopping-simple mb-[-3px]"></i> <span>Sales</span>
+                    </a>
+                </li>
+
+
+                <li class="w-full">
+                    <a href={{ route('dashboard') }}
+                        class="py-3 px-3 w-[100vw] @if($page == 'clients') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
+                        <i class="fi fi-rr-hr-group mb-[-3px]"></i> <span>Clients</span>
+                    </a>
+                </li>
+
                 @if (strtolower(auth() -> user() -> role) == 'admin')
                     <li><a href={{ route('employees') }}
                         class="py-3 px-3 w-[100vw] @if($page == 'employees') bg-slate-500 @endif hover:bg-slate-500 flex flex-row items-center gap-2 rounded-full" wire:navigate>
