@@ -1,16 +1,16 @@
 <div>
-    <div class="lg:px-12 px-5 py-14">
+    <div class="lg:px-12 px-5">
         <h1 class="text-2xl pl-2 text-black">Add New Record</h1>
         <form class="flex flex-col gap-4 mt-5" wire:submit="add">
             @error('patient_id')
                 <p>Please select a patient</p>
             @enderror
             <div class="flex flex-row gap-3 items-center">
-                <span>Patient: </span> 
+                <span>Patient: </span>
                 <select wire:model="patient_id" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full lg:w-[50%]">
                     <option>-- Select a patient --</option>
                     @foreach ($patients as $patient)
-                        <option value="{{ $patient -> id }}">{{ $patient -> name }}</option>
+                        <option value="{{ $patient -> id }}" @if($patient -> id == $id) selected @endif>{{ $patient -> name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -31,7 +31,7 @@
                 <p>{{ $message }}</p>
             @enderror
             <textarea placeholder="Diagnosis" wire:model="diagnosis" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-xl transition-all duration-150 ease-in-out w-full lg:w-[50%]"></textarea>
-            
+
             @error('treatment')
                 <p>{{ $message }}</p>
             @enderror
@@ -60,7 +60,7 @@
                 <input wire:model="appointment_check" id="appointment_check" type="checkbox">
                 <label for="appointment_check">Add appointment</label>
             </div>
-             
+
             <button type="submit" class=" px-3 py-2 rounded-full text-white w-fit bg-[#3C5B6F]">+ Add</button>
         </form>
     </div>
