@@ -16,7 +16,7 @@
         @auth
 
             <livewire:header></livewire:header>
-            <div class="lg:ml-[25%] ml-[10%] w-full">
+            <div class="lg:ml-[25%] w-full">
                 <div class="w-full flex flex-row justify-between">
                     <div class="p-5 lg:px-12 flex flex-row items-center">
                         <h1 class="text-2xl">Welcome, {{ request() -> user() -> name }}</h1>
