@@ -53,39 +53,37 @@
 
 
         @assets
-            <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         @endassets
     </div>
-    <div class="flex flex-col
-            h-[100dvh] overflow-hidden
-            w-[15%] gap-8
-            fixed item-center
+    <div class="flex flex-row
+            w-full overflow-hidden
+            gap-8
+            fixed bottom-0 item-center
             lg:px-10 px-3
-            py-5 bg-[#153448]
+            py-3 bg-[#153448]
             shadow-md text-white
             lg:hidden"
 >
 
-        <ul class="flex flex-col w-full gap-2 justify-between text-xl">
+        <ul class="flex flex-row w-full gap-2 items-center justify-between text-xl">
+
 
             @auth
-                <div>
-                    <li class="w-full">
+                    <li class="w-fit">
                         <a href={{ route('dashboard') }}
-                            class="py-3 px-3 w-[100vw] @if($page == 'dashboard') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
+                            class="py-2 px-3 w-fit @if($page == 'dashboard') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
                             <i class="fi fi-rr-house-chimney mb-[-3px]"></i></span>
                         </a>
                     </li>
                     @if (strtolower(auth() -> user() -> role) == 'admin')
-                        <li><a href={{ route('employees') }}
-                            class="py-3 px-3 w-[100vw] @if($page == 'employees') bg-slate-500 @endif hover:bg-slate-500 flex flex-row items-center gap-2 rounded-full" wire:navigate>
+                        <li class"w-fit"><a href={{ route('employees') }}
+                            class="py-3 px-3 w-fit @if($page == 'employees') bg-slate-500 @endif hover:bg-slate-500 flex flex-row items-center gap-2 rounded-full" wire:navigate>
                             <i class="fi fi-rr-users-alt mb-[-3px]"></i>
                         </a></li>
                     @endif
-                </div>
+
                 <li
-                    class=" border-t-2 border-slate-500">
+                    class="">
                     <button
                         wire:click="logout"
                         class="p-3 text-red-400 flex flex-row gap-2 items-center"
