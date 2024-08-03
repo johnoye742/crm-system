@@ -11,7 +11,7 @@ class ViewPatientData extends Component
 {
     public $patient;
 
-    public function mount(User $user, Patient $patient) {
+    public function mount(User $user, User $patient) {
 
     }
 
@@ -21,7 +21,7 @@ class ViewPatientData extends Component
         return view('livewire.health-care.view-patient-data', [
             "patient" => $patient,
             "emergency_contact" =>  $patient -> emergency_contact,
-            "medical_record" => $patient -> records
+            "medical_record" => $patient -> records() -> orderBy('id', 'DESC') -> get()
         ]) -> title("View Patient - ". $patient -> name);
     }
 
