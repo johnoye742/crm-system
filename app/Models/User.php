@@ -26,7 +26,14 @@ class User extends Authenticatable
         'password',
         'role',
         'niche',
-        'organisation_id'
+        'dob',
+        'gender',
+        'state_of_orgin',
+        'occupation',
+        'organisation_id',
+        'phone',
+        'emergency_contact',
+        'address'
     ];
 
     /**
@@ -57,6 +64,10 @@ class User extends Authenticatable
     public function properties() : BelongsToMany {
 
         return $this -> belongsToMany(Property::class, foreignPivotKey: 'property_id', table: 'users_properties');
+    }
+
+    public function records() : HasMany {
+        return $this -> hasMany(MedicalRecord::class, 'patient_id');
     }
 
     public function appointments() {

@@ -21,6 +21,14 @@ return new class extends Migration
             $table -> foreignIdFor(Organisation::class, 'organisation_id');
             $table -> text('role');
             $table -> text('niche');
+            $table -> date('dob');
+            $table -> enum('gender', ['male', 'female', 'custom']);
+            $table -> text('emergency_contact') -> nullable();
+            $table -> text('address') -> nullable();
+            $table -> text('phone') -> nullable();
+            $table -> text('occupation') -> nullable();
+            $table -> text('state_of_origin') -> nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });
