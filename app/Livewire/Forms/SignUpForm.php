@@ -24,6 +24,10 @@ class SignUpForm extends Form
     public $niche;
     #[Validate('required')]
     public $org_name;
+    #[Validate('required')]
+    public $dob;
+    #[Validate('required')]
+    public $gender;
 
     public function createUser() {
         $this -> validate();
@@ -42,9 +46,11 @@ class SignUpForm extends Form
             "name" => $this -> fname,
             "role" => "Admin",
             "niche" => $this -> niche,
-            "organisation_id" => $organisation -> id
+            "organisation_id" => $organisation -> id,
+            "dob" => $this -> dob,
+            "gender" => $this -> gender
         ];
-
+        // Create new user
         User::create($value);
 
     }
