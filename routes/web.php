@@ -129,7 +129,7 @@ Route::middleware('auth') -> group(function () {
 
         Route::get('patients/{patient}', ViewPatientData::class)
         -> name("health-care.view-patient")
-        -> can('view', "patient");
+       ;
     });
 
 });
