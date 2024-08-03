@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Organisation;
 use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,7 +16,7 @@ class HealthCareDashboard extends Component
     {
         $user = Auth::user();
         $user_organisation = $user -> organisation;
-        $patients = Patient::where('organisation_id', $user_organisation -> id) -> orderBy('id', 'DESC') -> limit(5) -> get();
+        $patients = User::where('organisation_id', $user_organisation -> id) -> where('role', 'health-care-patient') -> orderBy('id', 'DESC') -> limit(5) -> get();
 
         return view('livewire.health-care.dashboard', [
             'user' => $user,

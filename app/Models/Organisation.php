@@ -28,6 +28,6 @@ class Organisation extends Model
     }
 
     public function patients() : HasMany {
-        return $this -> hasMany(Patient::class);
+        return $this -> hasMany(User::class, 'organisation_id');
     }
 }

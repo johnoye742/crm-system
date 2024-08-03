@@ -11,4 +11,7 @@
 [✅] design and create patient appointments table
 [✅] create page for adding medical_records
 [✅] create page for adding, editing and viewing appointments
-[ ] create pages for viewing employees, properties, patients, records, etc
+[✅] create pages for viewing employees, properties, patients, records, etc
+[✅] add user roles for patient and client
+[ ] delete patient and client tables
+[✅] point patient data to specific user with patient role

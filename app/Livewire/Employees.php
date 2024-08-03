@@ -19,7 +19,7 @@ class Employees extends Component
     public function render()
     {
         return view('livewire.employees', [
-            'employees' => $this -> organisation -> employees,
+            'employees' => $this -> organisation -> employees -> where('role', "!=", 'health-care-patient'),
             'organisation_name' => $this -> organisation -> name
         ]);
     }

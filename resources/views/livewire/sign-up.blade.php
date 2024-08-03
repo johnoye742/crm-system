@@ -14,6 +14,22 @@
                 <input type="email" wire:model="form.email" placeholder="Email" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
                 <input type="text" wire:model="form.fname" placeholder="Full Name" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-full">
 
+                <div class="w-full flex flex-row gap-2 items-center">
+                    <label for="dob" class="">Date Of Birth:</label>
+                    <input type="date" id="dob" class="bg-gray-200 focus:border-[#3C5B6F] border-gray-200 border-2 outline-none px-3 py-2 rounded-full transition-all duration-150 ease-in-out w-fit" name="dob" wire:model="form.dob">
+                </div>
+
+                <div class="w-full flex flex-row items-center gap-2">
+                    <label for="gender">Gender: </label>
+                    <select id="gender" class="p-3 py-2 rounded-full" wire:model="form.gender">
+                        <option>-- Select a gender --</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="custom">Custom</option>
+                    </select>
+
+                </div>
+
                 <div class="w-full flex flex-row items-center gap-2">
                     <label for="niche">Business Type: </label>
                     <select id="niche" class="p-3 py-2 rounded-full" wire:model="form.niche">

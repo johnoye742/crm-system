@@ -52,4 +52,73 @@
             @endif
         @endcan
     </div>
+
+    <!-- For Patients Only -->
+    @if(strtolower($user -> role) == "health-care-patient")
+        <div class="">
+
+            <section class="mt-3 border-t border-t-gray-500 flex flex-col gap-3 pt-3">
+                <h2 class="text-xl">Demographics</h2>
+                <div>
+                    <h3 class="font-bold">Patient Name</h3>
+                    <p>{{ $user -> name }}</p>
+                </div>
+                <div>
+                    <h3 class="font-bold">Patient Phone Number</h3>
+                    <p>{{ $user -> phone }}</p>
+                </div>
+                <div>
+                    <h3 class="font-bold">Emergency Contact</h3>
+                    <p>{{ $user -> emergency_contact }}</p>
+                </div>
+            </section>
+
+                <section class="mt-3 border-t border-t-gray-500 flex flex-col gap-3">
+                    <h2 class="text-xl">Your Medical Record</h2>
+
+
+                    @foreach ($user -> records as $record)
+                        <section class="border-b grid grid-cols-4 hover:bg-gray-100 p-5 border-b-gray-100 flex flex-col rounded-lg gap-3">
+                            <div>
+                                <h3 class="font-bold">Visit Date</h3>
+                                <p>{{ $record -> visit_date }}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Doctor Name</h3>
+                                <p>{{ $record -> doctor -> name }}</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Visit Reason</h3>
+                                <p>{{ $record -> visit_reason }}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Diagnosis</h3>
+                                <p>{{ $record -> diagnosis }}</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Treatment</h3>
+                                <p>{{ $record -> treatment }}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Prescription</h3>
+                                <p>{{ $record -> prescription }}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Notes</h3>
+                                <p>{{ $record -> notes }}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Follow Up Date</h3>
+                                <p>{{ $record -> follow_up_date }}</p>
+                            </div>
+                        </section>
+                    @endforeach
+                </section>
+        </div>
+    @endif
 </div>

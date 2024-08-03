@@ -26,12 +26,14 @@
                     </a>
                 </li>
 
-                <li class="w-full">
-                    <a href={{ route('health-care.patients') }}
-                    class="py-3 px-3 w-[100vw] @if($page == 'patients') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
-                        <i class="fi fi-rr-user-injured mb-[-3px]"></i> <span>Patients</span>
-                    </a>
-                </li>
+                @if(strtolower(auth() -> user() -> role) != 'health-care-patient')
+                    <li class="w-full">
+                        <a href={{ route('health-care.patients') }}
+                        class="py-3 px-3 w-[100vw] @if($page == 'patients') bg-slate-500 @endif hover:bg-slate-500 flex flex-row gap-2 items-center rounded-full" wire:navigate>
+                            <i class="fi fi-rr-user-injured mb-[-3px]"></i> <span>Patients</span>
+                        </a>
+                    </li>
+                @endif
 
                 @if (strtolower(auth() -> user() -> role) == 'admin')
                     <li><a href={{ route('employees') }}
