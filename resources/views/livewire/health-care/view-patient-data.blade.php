@@ -37,26 +37,26 @@
                     </div>
                     <div>
                         <h3 class="font-bold">Visit Reason</h3>
-                        <p>{{ $record -> visit_reason }}</p>
+                        <p>{{ \Illuminate\Support\Facades\Crypt::decryptString($record -> visit_reason) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Diagnosis</h3>
-                        <p>{{ $record -> diagnosis }}</p>
+                        <p>{{ \Illuminate\Support\Facades\Crypt::decryptString($record -> diagnosis) }}</p>
                     </div>
                     <div>
                         <h3 class="font-bold">Treatment</h3>
-                        <p>{{ $record -> treatment }}</p>
+                        <p>{{ \Illuminate\Support\Facades\Crypt::decryptString($record -> treatment) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Prescription</h3>
-                        <p>{{ $record -> prescription }}</p>
+                        <p>{{ \Illuminate\Support\Facades\Crypt::decryptString($record -> prescription) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Notes</h3>
-                        <p>{{ $record -> notes }}</p>
+                        <p>{{ \Illuminate\Support\Facades\Crypt::decryptString($record -> notes) }}</p>
                     </div>
 
                     <div>
