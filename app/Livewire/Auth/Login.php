@@ -24,10 +24,10 @@ class Login extends Component
         ];
 
         if(Auth::attempt($values)) return redirect() -> route('dashboard');
-        
+
     }
     public function render()
     {
-        return view('livewire.login');
+        return view('livewire.auth.login');
     }
 }

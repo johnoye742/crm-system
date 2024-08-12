@@ -12,7 +12,7 @@ use Livewire\Component;
 class SignUp extends Component
 {
     public SignUpForm $form;
-    
+
 
     public function signUp () {
         $this -> form -> createUser();
@@ -21,6 +21,6 @@ class SignUp extends Component
 
     public function render()
     {
-        return view('livewire.sign-up', ['organizations' => Organisation::all()]);
+        return view('livewire.auth.sign-up', ['organizations' => Organisation::all()]);
     }
 }
