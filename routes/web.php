@@ -9,10 +9,12 @@ use App\Livewire\AddOrganization;
 use App\Livewire\AddPatient;
 use App\Livewire\AddPropertyPage;
 use App\Livewire\AddPropertySale;
+use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Dashboard;
 use App\Livewire\EditEmployee;
 use App\Livewire\EditProperty;
 use App\Livewire\Employees;
+use App\Livewire\ForgotPassword;
 use App\Livewire\HealthCare\AddAppointments;
 use App\Livewire\HealthCare\AddMedicalRecords;
 use App\Livewire\HealthCare\Patients;
@@ -51,7 +53,10 @@ Route::get('/login', Login::class) -> name('login')
 
 Route::delete('/delete-property', [PropertyController::class, 'delete']);
 
+Route::get('/forgot-password', ForgotPassword::class) -> name("password.request")
+                                                      -> middleware("guest");
 
+Route::get('/reset-password/{token}', ResetPassword::class) -> name('password.reset');
 
 Route::middleware('auth') -> group(function () {
     Route::get("add-client", AddClient::class) -> name('add-client');
