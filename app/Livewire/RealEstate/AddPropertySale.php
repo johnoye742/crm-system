@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\RealEstate;
 
 use App\Models\Organisation;
 use App\Models\PropertySale;

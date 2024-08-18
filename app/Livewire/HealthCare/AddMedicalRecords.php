@@ -5,6 +5,7 @@ namespace App\Livewire\HealthCare;
 use App\Models\MedicalRecord;
 use App\Models\PatientAppointment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
@@ -45,13 +46,13 @@ class AddMedicalRecords extends Component
             'patient_id' => $this -> patient_id,
             // Note: only doctors should be able to add records so set policy for that
             'user_id' => Auth::user() -> id,
-            'visit_reason' => $this -> visit_reason,
-            'diagnosis' => $this -> diagnosis,
-            'treatment' => $this -> treatment,
-            'prescription' => $this -> prescriptions,
+            'visit_reason' => Crypt::encryptString($this -> visit_reason),
+            'diagnosis' => Crypt::encryptString($this -> diagnosis),
+            'treatment' => Crypt::encryptString($this -> treatment),
+            'prescription' => Crypt::encryptString($this -> prescriptions),
             'visit_date' => date('Y-m-d'),
             'follow_up_date' => $this -> follow_up_date,
-            'notes' => $this -> notes
+            'notes' => Crypt::encryptString($this -> notes)
         ];
 
         // Insert the data into the MedicalRecords table

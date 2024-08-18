@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\RealEstate;
 
 use App\Models\Client;
 use App\Models\Organisation;
@@ -27,11 +27,11 @@ class Dashboard extends Component
             return Organisation::find($this -> orgId) -> properties;
         });
 
-        
+
         $propertySales = PropertySale::all() -> where('organisation_id', value: $this -> orgId);
-        
+
         return view('livewire.real-estate.dashboard', [
-            'user' => Auth::user(), 
+            'user' => Auth::user(),
             'properties' => $properties,
             'property_sales' => $propertySales,
             'clients' => Client::all() -> where('organisation_id', $this -> orgId)
@@ -44,7 +44,7 @@ class Dashboard extends Component
 
         // Invalidate cache
         Cache::delete('organisation:properties.' . Auth::user() -> organisation_id);
-        
+
         return redirect() -> back();
     }
 }

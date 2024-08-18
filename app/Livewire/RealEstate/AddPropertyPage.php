@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\RealEstate;
 
 use App\Models\Organisation;
 use App\Models\Property;
@@ -40,11 +40,11 @@ class AddPropertyPage extends Component
         if($property -> save()) {
             // Invalidate cache
             Cache::delete('organisation:properties.' . Auth::user() -> organisation_id);
-            
+
             return redirect() -> route('dashboard');
         }
     }
-    
+
     public function render()
     {
         return view('livewire.real-estate.add-property-page', ['organizations' => Organisation::all()]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\HealthCare;
 
 use App\Models\Patient;
 use App\Models\User;

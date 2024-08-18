@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\RealEstate;
 
 use App\Models\Property;
 use Illuminate\Support\Facades\Cache;
@@ -13,7 +13,7 @@ class EditProperty extends Component
     public function save() {
         // Instantiate a Property Model
         $property = Property::find($this -> id);
-        
+
         // Properly arrange the values from the user input
         $values = [
             'property_name' => $this -> pname,

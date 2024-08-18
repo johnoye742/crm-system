@@ -17,7 +17,8 @@ class AddEmployees extends Component
     #[Validate('required')]
     public $pwd;
     #[Validate('required')]
-    public $role;
+    public $role, $dob, $gender;
+
 
     public function add() {
         $this -> validate();
@@ -32,7 +33,9 @@ class AddEmployees extends Component
             'password' => $this -> pwd,
             'organisation_id' => $user -> organisation_id,
             'niche' => $user -> niche,
-            'role' => $this -> role
+            'role' => $this -> role,
+            'dob' => $this -> dob,
+            'gender' => $this -> gender
         ]);
 
         return redirect() -> route('employees');
