@@ -3,7 +3,7 @@
 use App\Http\Controllers\PropertyController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Livewire\AddClient;
+use App\Livewire\RealEstate\AddClient;
 use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
 use App\Livewire\HealthCare\AddPatient;
@@ -12,7 +12,7 @@ use App\Livewire\RealEstate\AddPropertySale;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\RealEstate\Dashboard;
 use App\Livewire\EditEmployee;
-use App\Livewire\EditProperty;
+use App\Livewire\RealEstate\EditProperty;
 use App\Livewire\Employees;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\HealthCare\AddAppointments;
