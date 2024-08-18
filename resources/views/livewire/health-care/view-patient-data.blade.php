@@ -5,6 +5,7 @@
         <a href={{ route('health-care.add-medical-records', ['id' => $patient -> id]) }} class="px-3 py-2 rounded-full text-black drop-shadow-lg w-fit bg-[#DFD0B8]" wire:navigate>Add Record</a>
     </div>
     <section class="mt-3 border-t border-t-gray-500 flex flex-col gap-3 pt-3">
+        <p><b>Summary: </b> {{ $analysis }}</p>
         <h2 class="text-xl">Demographics</h2>
         <div>
             <h3 class="font-bold">Patient Name</h3>
@@ -37,26 +38,26 @@
                     </div>
                     <div>
                         <h3 class="font-bold">Visit Reason</h3>
-                        <p>{{ $record -> visit_reason }}</p>
+                        <p>{{ Illuminate\Support\Facades\Crypt::decryptString($record -> visit_reason) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Diagnosis</h3>
-                        <p>{{ $record -> diagnosis }}</p>
+                        <p>{{ Illuminate\Support\Facades\Crypt::decryptString($record -> diagnosis) }}</p>
                     </div>
                     <div>
                         <h3 class="font-bold">Treatment</h3>
-                        <p>{{ $record -> treatment }}</p>
+                        <p>{{ Illuminate\Support\Facades\Crypt::decryptString($record -> treatment) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Prescription</h3>
-                        <p>{{ $record -> prescription }}</p>
+                        <p>{{ Illuminate\Support\Facades\Crypt::decryptString($record -> prescription) }}</p>
                     </div>
 
                     <div>
                         <h3 class="font-bold">Notes</h3>
-                        <p>{{ $record -> notes }}</p>
+                        <p>{{ Illuminate\Support\Facades\Crypt::decryptString($record -> notes) }}</p>
                     </div>
 
                     <div>
