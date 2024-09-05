@@ -8,6 +8,7 @@
         "php": "^8.3",
         "doctrine/dbal": "^3.5.1",
         "guzzlehttp/guzzle": "^7.2",
+        "johnoye742/php-hermes": "dev-main",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
