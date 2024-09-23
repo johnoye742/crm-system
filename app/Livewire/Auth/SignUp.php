@@ -3,8 +3,6 @@
 namespace App\Livewire\Auth;
 
 use App\Livewire\Forms\SignUpForm;
-use App\Models\Organisation;
-use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -21,6 +19,6 @@ class SignUp extends Component
 
     public function render()
     {
-        return view('livewire.auth.sign-up', ['organizations' => Organisation::all()]);
+        return view('livewire.auth.sign-up');
     }
 }
