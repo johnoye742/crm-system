@@ -28,7 +28,7 @@ return new class extends Migration
             $table -> text('phone') -> nullable();
             $table -> text('occupation') -> nullable();
             $table -> text('state_of_origin') -> nullable();
-            $table -> integer("current_organisation");
+            $table -> integer("current_organisation") -> nullable();
             $table->rememberToken();
             $table->timestamps();
         });
