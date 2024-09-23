@@ -50,7 +50,8 @@ class Header extends Component
         if(request() -> user() -> niche == 'health-care') {
             return view('livewire.health-care.header');
         }
-        return view('livewire.real-estate.header');
+        if(request() -> user() -> niche == 'real-estate') return view('livewire.real-estate.header');
+        return view('livewire.header');
     }
 
     public function logout() {
