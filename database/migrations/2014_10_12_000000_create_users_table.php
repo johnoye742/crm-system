@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table -> foreignIdFor(Organisation::class, 'organisation_id');
-            $table -> text('role');
-            $table -> text('niche');
+            $table -> json("organisations") -> nullable(true);
+            $table -> json('roles') -> nullable(true);
+            $table -> json('niches') -> nullable(true);
             $table -> date('dob');
             $table -> enum('gender', ['male', 'female', 'custom']);
             $table -> text('emergency_contact') -> nullable();
