@@ -21,10 +21,6 @@ class SignUpForm extends Form
     #[Validate('required')]
     public $fname;
     #[Validate('required')]
-    public $niche;
-    #[Validate('required')]
-    public $org_name;
-    #[Validate('required')]
     public $dob;
     #[Validate('required')]
     public $gender;
@@ -34,19 +30,10 @@ class SignUpForm extends Form
 
         if($this -> pwd != $this -> pwd) return redirect() -> back() -> withErrors(['password' => 'Passwords do not match.']);
 
-        // Create a new organisation with the organisation name and niche given by the user
-        $organisation = Organisation::create([
-            'name' => $this -> org_name,
-            'niche' => $this -> niche
-        ]);
-
         $value = [
             "email" => $this -> email,
             "password" => Hash::make($this -> pwd),
             "name" => $this -> fname,
-            "role" => "Admin",
-            "niche" => $this -> niche,
-            "organisation_id" => $organisation -> id,
             "dob" => $this -> dob,
             "gender" => $this -> gender
         ];
