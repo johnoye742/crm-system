@@ -3,6 +3,8 @@
 use App\Http\Controllers\PropertyController;
 use App\Http\Middleware\EnsureAdmin;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Livewire\CreateOrganisation;
+use App\Livewire\Dashboard as AppDashboard;
 use App\Livewire\RealEstate\AddClient;
 use App\Livewire\AddEmployees;
 use App\Livewire\AddOrganization;
@@ -67,6 +69,8 @@ Route::middleware('auth') -> group(function () {
     -> can('add-employees');
 
 
+    Route::get('organisations/new', CreateOrganisation::class)
+    -> name('organisations.new');
 
     Route::get('employees', Employees::class) -> name('employees')
     -> middleware(EnsureAdmin::class);
@@ -83,17 +87,8 @@ Route::middleware('auth') -> group(function () {
     Route::get('/real-estate/add-property', AddPropertyPage::class)
     -> name("add-property");
 
-    Route::get('/dashboard', function () {
-        $niche = Auth::user() -> niche;
-        switch($niche) {
-            case 'real-estate':
-                return redirect() -> route('real-estate.dashboard');
-            break;
-            case 'health-care':
-                return redirect() -> route('health-care.dashboard');
-            break;
-        }
-    }) -> name('dashboard');
+    Route::get('/dashboard', AppDashboard::class)-> name('dashboard');
+
     Route::prefix('real-estate') -> group(function () {
 
         Route::get('dashboard', Dashboard::class)
