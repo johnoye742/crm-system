@@ -24,16 +24,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'roles',
         'niche',
         'dob',
         'gender',
         'state_of_orgin',
         'occupation',
-        'organisation_id',
+        'organisations',
         'phone',
         'emergency_contact',
-        'address'
+        'address',
     ];
 
     /**
@@ -54,6 +54,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'organisations' => 'array',
+        'roles' => 'array'
     ];
 
     public function organisation() : BelongsTo {
