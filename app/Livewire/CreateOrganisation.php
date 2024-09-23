@@ -33,14 +33,18 @@ class CreateOrganisation extends Component
         $user = User::find(Auth::user() -> id);
 
         $organisations = [];
+        $roles = $user -> roles == null ? [] : $user -> roles;
         if($user -> organisations != null) {
-            $organisations = json_decode($user -> organisations);
+            $organisations = $user -> organisations;
             array_push($organisations, $organisation -> id);
         } else {
             $organisations[0] = $organisation -> id;
         }
 
         $user -> update(['organisations' => $organisations]);
+        $newRole = $roles;
+        $newRole[$organisation -> id] = "admin";
+        $user -> update(['roles' => $newRole]);
 
         return redirect() -> route('dashboard');
     }
