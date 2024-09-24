@@ -34,6 +34,7 @@ class User extends Authenticatable
         'phone',
         'emergency_contact',
         'address',
+        'current_organisation'
     ];
 
     /**
@@ -77,15 +78,11 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        if(strtolower($this -> role) == 'admin') {
-            return true;
-        }
-
-        return false;
+        return strtolower($this->roles[$this -> current_organisation]) == 'admin';
     }
 
     public function isDoctor() {
-        return strtolower($this -> role) == 'health-care-doctor';
+        return strtolower($this->roles[$this -> current_organisation]) == 'health-care-doctor';
     }
 
     public function isReceptionist() {
