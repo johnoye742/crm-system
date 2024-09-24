@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Organisation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -47,10 +49,12 @@ class Header extends Component
 
     public function render()
     {
-        if(request() -> user() -> niche == 'health-care') {
-            return view('livewire.health-care.header');
+        $current_org = Organisation::find(Auth::user() -> current_organisation);
+        Log::debug($current_org);
+        if($current_org -> niche == 'health-care') {
+            return view('livewire.health-care.header', ['page' => $this -> page]);
         }
-        if(request() -> user() -> niche == 'real-estate') return view('livewire.real-estate.header');
+        if($current_org -> niche == 'real-estate') return view('livewire.real-estate.header');
         return view('livewire.header');
     }
 
