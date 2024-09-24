@@ -12,15 +12,15 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     public $organisations = [];
+    public $current_org;
+    public function mount() {
+
+        $this -> organisations = Auth::user() -> organisations;
+        Log::debug($this -> organisations);
+        $this -> current_org = Organisation::find(Auth::user() -> current_organisation);
+    }
     public function render()
     {
-        $orgs = Auth::user() -> organisations;
-        if($orgs != null) {
-            foreach ($orgs as $org) {
-                array_push($this -> organisations, Organisation::find($org));
-            }
-        }
-        Log::debug($this -> organisations);
         return view('livewire.dashboard');
     }
 }
