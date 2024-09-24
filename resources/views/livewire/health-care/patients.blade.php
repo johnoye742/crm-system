@@ -1,6 +1,6 @@
 <div class="lg:px-12 px-5 py-5 w-full">
     <h1 class="text-2xl mb-8">All Patients</h1>
-    <p class="text-2xl font-bold mb-2">{{ request() -> user() -> organisation -> name }}</p>
+    <p class="text-2xl font-bold mb-2">{{ $organisation -> name }}</p>
 
 
     <table
