@@ -43,8 +43,7 @@ class AddPatient extends Component
             'email' => $this -> email,
             'state_of_origin' => $this -> state,
             'role' => "health-care-patient",
-            'niche' => 'health-care',
-            'organisation_id' => Auth::user() -> organisation_id,
+            'organisation_id' => Auth::user() -> current_organisation,
             'occupation' => $this -> occupation
         ];
 
