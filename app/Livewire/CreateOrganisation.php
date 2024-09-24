@@ -43,8 +43,12 @@ class CreateOrganisation extends Component
 
         $user -> update(['organisations' => $organisations]);
         $newRole = $roles;
+        // e.g where $organisation->id = 2; {..., "2": "admin"}
         $newRole[$organisation -> id] = "admin";
         $user -> update(['roles' => $newRole]);
+
+        // Set the newly created organisation to the current_organisation
+        $user -> update(['current_organisation' => $organisation -> id]);
 
         return redirect() -> route('dashboard');
     }
